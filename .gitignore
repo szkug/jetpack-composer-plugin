@@ -1,0 +1,7 @@
+# Local experiments belong outside the public plugin.
+/evals/
+
+# Generated local artifacts.
+__pycache__/
+*.py[cod]
+.DS_Store

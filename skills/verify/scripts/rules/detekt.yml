@@ -1,0 +1,553 @@
+# Composer Compose full-analysis profile v2 for detekt 2.0.0-alpha.6.
+# Requires verified compilation classpath and JVM target; no silent light-mode fallback.
+config:
+  validation: true
+  warningsAsErrors: true
+processors:
+  active: false
+console-reports:
+  active: false
+comments:
+  active: false
+complexity:
+  active: true
+  CognitiveComplexMethod:
+    active: false
+  ComplexCondition:
+    active: false
+  ComplexInterface:
+    active: false
+  CyclomaticComplexMethod:
+    active: true
+    severity: warning
+    allowedComplexity: 15
+    ignoreNestingFunctions: true
+  LabeledExpression:
+    active: false
+  LargeClass:
+    active: false
+  LongMethod:
+    active: true
+    severity: warning
+    allowedLines: 80
+  LongParameterList:
+    active: true
+    severity: warning
+    allowedFunctionParameters: 8
+    ignoreDefaultParameters: true
+  MethodOverloading:
+    active: false
+  NamedArguments:
+    active: false
+  NestedBlockDepth:
+    active: true
+    severity: warning
+    allowedDepth: 5
+  NestedScopeFunctions:
+    active: false
+  ReplaceSafeCallChainWithRun:
+    active: false
+  StringLiteralDuplication:
+    active: false
+  TooManyFunctions:
+    active: true
+    severity: warning
+    allowedFunctionsPerFile: 15
+    allowedFunctionsPerClass: 11
+    allowedFunctionsPerInterface: 11
+    allowedFunctionsPerObject: 11
+    allowedFunctionsPerEnum: 11
+    ignoreDeprecated: false
+    ignorePrivate: false
+    ignoreInternal: false
+    ignoreOverridden: false
+    ignoreAnnotatedFunctions:
+    - Preview
+    - PreviewScreenSizes
+    - PreviewFontScale
+    - PreviewLightDark
+    - PreviewDynamicColors
+coroutines:
+  active: false
+empty-blocks:
+  active: true
+  EmptyCatchBlock:
+    active: true
+    severity: warning
+  EmptyClassBlock:
+    active: false
+  EmptyDefaultConstructor:
+    active: false
+  EmptyDoWhileBlock:
+    active: false
+  EmptyElseBlock:
+    active: false
+  EmptyFinallyBlock:
+    active: false
+  EmptyForBlock:
+    active: false
+  EmptyFunctionBlock:
+    active: false
+  EmptyIfBlock:
+    active: false
+  EmptyInitBlock:
+    active: false
+  EmptyKotlinFile:
+    active: false
+  EmptySecondaryConstructor:
+    active: false
+  EmptyTryBlock:
+    active: false
+  EmptyWhenBlock:
+    active: false
+  EmptyWhileBlock:
+    active: false
+exceptions:
+  active: false
+naming:
+  active: true
+  BooleanPropertyNaming:
+    active: false
+  ClassNaming:
+    active: false
+  ConstructorParameterNaming:
+    active: false
+  EnumNaming:
+    active: false
+  ForbiddenClassName:
+    active: false
+  FunctionNameMaxLength:
+    active: false
+  FunctionNameMinLength:
+    active: false
+  FunctionNaming:
+    active: true
+    severity: warning
+    ignoreAnnotated:
+    - Composable
+  FunctionParameterNaming:
+    active: false
+  InvalidPackageDeclaration:
+    active: false
+  LambdaParameterNaming:
+    active: false
+  MatchingDeclarationName:
+    active: false
+  MemberNameEqualsClassName:
+    active: false
+  NoNameShadowing:
+    active: false
+  NonBooleanPropertyPrefixedWithIs:
+    active: false
+  ObjectPropertyNaming:
+    active: false
+  PackageNaming:
+    active: false
+  TopLevelPropertyNaming:
+    active: false
+  VariableMaxLength:
+    active: false
+  VariableMinLength:
+    active: false
+  VariableNaming:
+    active: false
+performance:
+  active: false
+potential-bugs:
+  active: false
+style:
+  active: true
+  UnusedPrivateFunction:
+    active: true
+    severity: warning
+    ignoreAnnotated:
+    - Preview
+    - PreviewScreenSizes
+    - PreviewFontScale
+    - PreviewLightDark
+    - PreviewDynamicColors
+  AbstractClassCanBeConcreteClass:
+    active: false
+  AbstractClassCanBeInterface:
+    active: false
+  AlsoCouldBeApply:
+    active: false
+  BracesOnIfStatements:
+    active: false
+  BracesOnWhenStatements:
+    active: false
+  CanBeNonNullable:
+    active: false
+  CascadingCallWrapping:
+    active: false
+  ClassOrdering:
+    active: false
+  CollapsibleIfStatements:
+    active: false
+  DataClassContainsFunctions:
+    active: false
+  DataClassShouldBeImmutable:
+    active: false
+  DestructuringDeclarationWithTooManyEntries:
+    active: false
+  DoubleNegativeExpression:
+    active: false
+  DoubleNegativeLambda:
+    active: false
+  EqualsNullCall:
+    active: false
+  EqualsOnSignatureLine:
+    active: false
+  ExplicitCollectionElementAccessMethod:
+    active: false
+  ExplicitItLambdaMultipleParameters:
+    active: false
+  ExplicitItLambdaParameter:
+    active: false
+  ExpressionBodySyntax:
+    active: false
+  ForbiddenAnnotation:
+    active: false
+  ForbiddenComment:
+    active: false
+  ForbiddenImport:
+    active: false
+  ForbiddenMethodCall:
+    active: false
+  ForbiddenNamedParam:
+    active: false
+  ForbiddenOptIn:
+    active: false
+  ForbiddenSuppress:
+    active: false
+  ForbiddenVoid:
+    active: false
+  FunctionOnlyReturningConstant:
+    active: false
+  LoopWithTooManyJumpStatements:
+    active: false
+  MagicNumber:
+    active: false
+  MandatoryBracesLoops:
+    active: false
+  MaxChainedCallsOnSameLine:
+    active: false
+  MaxLineLength:
+    active: false
+  MayBeConstant:
+    active: false
+  ModifierOrder:
+    active: false
+  MultilineLambdaItParameter:
+    active: false
+  MultilineRawStringIndentation:
+    active: false
+  NestedClassesVisibility:
+    active: false
+  NewLineAtEndOfFile:
+    active: false
+  NoTabs:
+    active: false
+  NullableBooleanCheck:
+    active: false
+  ObjectLiteralToLambda:
+    active: false
+  OptionalAbstractKeyword:
+    active: false
+  OptionalUnit:
+    active: false
+  ProtectedMemberInFinalClass:
+    active: false
+  RangeUntilInsteadOfRangeTo:
+    active: false
+  RedundantConstructorKeyword:
+    active: false
+  RedundantExplicitType:
+    active: false
+  RedundantHigherOrderMapUsage:
+    active: false
+  RedundantVisibilityModifier:
+    active: false
+  ReturnCount:
+    active: false
+  SafeCast:
+    active: false
+  SerialVersionUIDInSerializableClass:
+    active: false
+  SpacingAfterPackageAndImports:
+    active: false
+  StringShouldBeRawString:
+    active: false
+  ThrowsCount:
+    active: false
+  TrailingWhitespace:
+    active: false
+  TrimMultilineRawString:
+    active: false
+  UnderscoresInNumericLiterals:
+    active: false
+  UnnecessaryAny:
+    active: false
+  UnnecessaryApply:
+    active: false
+  UnnecessaryBackticks:
+    active: false
+  UnnecessaryBracesAroundTrailingLambda:
+    active: false
+  UnnecessaryFilter:
+    active: false
+  UnnecessaryFullyQualifiedName:
+    active: false
+  UnnecessaryInheritance:
+    active: false
+  UnnecessaryInnerClass:
+    active: false
+  UnnecessaryLet:
+    active: false
+  UnnecessaryParentheses:
+    active: false
+  UnnecessaryReversed:
+    active: false
+  UnusedImport:
+    active: false
+  UnusedParameter:
+    active: false
+  UnusedPrivateClass:
+    active: false
+  UnusedPrivateProperty:
+    active: false
+  UnusedVariable:
+    active: false
+  UseAnyOrNoneInsteadOfFind:
+    active: false
+  UseArrayLiteralsInAnnotations:
+    active: false
+  UseCheckNotNull:
+    active: false
+  UseCheckOrError:
+    active: false
+  UseDataClass:
+    active: false
+  UseEmptyCounterpart:
+    active: false
+  UseIfEmptyOrIfBlank:
+    active: false
+  UseIfInsteadOfWhen:
+    active: false
+  UseIsNullOrEmpty:
+    active: false
+  UseLet:
+    active: false
+  UseOrEmpty:
+    active: false
+  UseRequire:
+    active: false
+  UseRequireNotNull:
+    active: false
+  UseSumOfInsteadOfFlatMapSize:
+    active: false
+  UselessCallOnNotNull:
+    active: false
+  UtilityClassWithPublicConstructor:
+    active: false
+  VarCouldBeVal:
+    active: false
+  WildcardImport:
+    active: false
+
+# Maintained Compose rules 0.6.8; resolved independently from project checks.
+Compose:
+  active: true
+  ComposableAnnotationNaming:
+    active: true
+    severity: warning
+  ComposableNaming:
+    active: true
+    severity: warning
+  ComposableNestingDepth:
+    active: false
+  ComposableParamOrder:
+    active: true
+    severity: warning
+  CompositionLocalAllowlist:
+    active: false
+  CompositionLocalNaming:
+    active: true
+    severity: warning
+  ConditionHoist:
+    active: true
+    severity: warning
+  ContentEmitterReturningValues:
+    active: true
+    severity: warning
+  ContentSlotReused:
+    active: true
+    severity: warning
+  ContentTrailingLambda:
+    active: true
+    severity: warning
+  DefaultsVisibility:
+    active: true
+    severity: warning
+  InvalidReadOnlyComposable:
+    active: true
+    severity: warning
+  LambdaParameterEventTrailing:
+    active: true
+    severity: warning
+  LambdaParameterInRestartableEffect:
+    active: true
+    severity: warning
+  Material2:
+    active: false
+  MissingNonRestartableComposable:
+    active: true
+    severity: info
+  MissingReadOnlyComposable:
+    active: true
+    severity: info
+  ModifierClickableOrder:
+    active: true
+    severity: warning
+  ModifierComposed:
+    active: true
+    severity: warning
+  ModifierMissing:
+    active: true
+    severity: warning
+  ModifierNaming:
+    active: true
+    severity: warning
+  ModifierNotUsedAtRoot:
+    active: true
+    severity: warning
+  ModifierReused:
+    active: true
+    severity: warning
+  ModifierShouldBeForwardedToEveryBranch:
+    active: true
+    severity: warning
+  ModifierWithoutDefault:
+    active: true
+    severity: warning
+  MultipleEmitters:
+    active: true
+    severity: warning
+  MutableParams:
+    active: true
+    severity: warning
+  MutableStateAutoboxing:
+    active: true
+    severity: info
+  MutableStateParam:
+    active: true
+    severity: warning
+  ParameterNaming:
+    active: true
+    severity: warning
+  PreviewAnnotationNaming:
+    active: true
+    severity: warning
+  PreviewNaming:
+    active: false
+  PreviewPublic:
+    active: true
+    severity: warning
+  RememberContentMissing:
+    active: true
+    severity: warning
+  RememberMissing:
+    active: true
+    severity: warning
+  StaleRememberUpdatedStateInRemember:
+    active: true
+    severity: warning
+  StateParam:
+    active: true
+    severity: warning
+  UnnecessaryComposable:
+    active: true
+    severity: info
+  UnnecessaryLaunchedEffect:
+    active: true
+    severity: warning
+  UnstableCollections:
+    active: false
+  VarsWithoutStateBacking:
+    active: true
+    severity: warning
+  ViewModelForwarding:
+    active: true
+    severity: warning
+  ViewModelInjection:
+    active: true
+    severity: warning
+
+# Composer source contracts; deliberately narrower than business/runtime acceptance.
+Composer:
+  active: true
+  UntypedEventCallback:
+    active: true
+    severity: warning
+  NondeterministicDefault:
+    active: true
+    severity: warning
+  NoOpActionDefault:
+    active: true
+    severity: warning
+    actionNames: [onSubmit, onConfirm, onCommit, onDelete]
+  PositionalBooleanArguments:
+    active: true
+    severity: warning
+  RedundantSizeModifier:
+    active: true
+    severity: warning
+  BlockingCallInComposition:
+    active: true
+    severity: warning
+    maxCallDepth: 3
+  NondeterministicPreview:
+    maxCallDepth: 3
+    active: true
+    severity: warning
+  PreviewEnvironmentDependency:
+    maxCallDepth: 3
+    active: true
+    severity: warning
+  UnusedEventCallback:
+    active: true
+    severity: warning
+  UnusedUiParameter:
+    active: true
+    severity: warning
+  StateWriteInComposition:
+    active: true
+    severity: warning
+  CoroutineLaunchInComposition:
+    active: true
+    severity: warning
+  InvalidLayoutBounds:
+    active: true
+    severity: warning
+  ConstantLazyItemKey:
+    active: true
+    severity: warning
+  UnkeyedRememberCapture:
+    active: true
+    severity: warning
+  DroppedEventCallback:
+    active: true
+    severity: warning
+    maxCallDepth: 3
+  DroppedUiInput:
+    active: true
+    severity: warning
+    maxCallDepth: 3
+
+  WhitespaceLayoutSpacer:
+    active: true
+    severity: warning
+  PreviewDuplicateBody:
+    active: true
+    severity: warning
+    minBodyTokens: 40

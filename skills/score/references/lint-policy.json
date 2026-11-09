@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "dimension": "D14",
+  "name": "Lint compliance",
+  "scope": "added-and-modified-lines",
+  "starting_score": 100,
+  "minimum_score": 0,
+  "deductions": {
+    "Fatal": 20,
+    "Error": 10,
+    "Warning": 2,
+    "Information": 0,
+    "Informational": 0,
+    "Hint": 0,
+    "Ignore": 0
+  },
+  "grouping": "One independent defect at one semantic owner; overlapping diagnostics use the maximum deduction once.",
+  "meaning": "Declared compliance policy, not empirically calibrated severity or a runtime-quality measure."
+}

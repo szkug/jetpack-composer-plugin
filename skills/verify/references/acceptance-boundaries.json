@@ -1,0 +1,925 @@
+{
+  "version": 12,
+  "meaning": "Migration ledger, not a score denominator. No row is silently treated as passed. Static score never establishes these broader outcomes.",
+  "requirements": {
+    "D01.event-route": {
+      "category": "D01",
+      "contract": "A required event extension reaches its owner without unrelated intermediaries interpreting its payload.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.UnusedEventCallback",
+        "detekt.Composer.DroppedEventCallback"
+      ],
+      "remaining": "End-to-end event meaning, extension behavior and authority require a declared task/call-path contract.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D01.event-contract": {
+      "category": "D01",
+      "contract": "Producer, required adapters and handler preserve event meaning under the declared extension.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.UntypedEventCallback"
+      ],
+      "remaining": "End-to-end event meaning, extension behavior and authority require a declared task/call-path contract.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D01.fact-authority": {
+      "category": "D01",
+      "contract": "A new fact has one authority and derived consumers rather than independently synchronized copies.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.MutableStateParam",
+        "detekt.Composer.StateWriteInComposition"
+      ],
+      "remaining": "End-to-end event meaning, extension behavior and authority require a declared task/call-path contract.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D01.model-extension": {
+      "category": "D01",
+      "contract": "The selected extension fits required valid state combinations without unrelated fields or behavior.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.PositionalBooleanArguments"
+      ],
+      "remaining": "End-to-end event meaning, extension behavior and authority require a declared task/call-path contract.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D01.lifetime-extension": {
+      "category": "D01",
+      "contract": "The extension preserves the selected reset and lifetime invariants.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.RememberMissing",
+        "detekt.Composer.UnkeyedRememberCapture",
+        "detekt.Composer.CoroutineLaunchInComposition"
+      ],
+      "remaining": "End-to-end event meaning, extension behavior and authority require a declared task/call-path contract.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D01.consumer-impact": {
+      "category": "D01",
+      "contract": "Only intended consumers change; unrelated responsibilities retain their declared behavior.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "End-to-end event meaning, extension behavior and authority require a declared task/call-path contract.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D02.shared-decision": {
+      "category": "D02",
+      "contract": "A shared configuration change reaches every required consumer from its semantic owner.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.UnusedUiParameter",
+        "detekt.Composer.DroppedUiInput"
+      ],
+      "remaining": "Change impact across actual callers and duplicated policies is not certified by syntax/default checks.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D02.default-change": {
+      "category": "D02",
+      "contract": "Changing a default affects only callers within its declared purpose.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.NondeterministicDefault",
+        "detekt.Composer.NoOpActionDefault",
+        "detekt.Compose.DefaultsVisibility"
+      ],
+      "remaining": "Change impact across actual callers and duplicated policies is not certified by syntax/default checks.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D02.local-change": {
+      "category": "D02",
+      "contract": "A local behavior change leaves unrelated responsibilities unchanged.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Change impact across actual callers and duplicated policies is not certified by syntax/default checks.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D02.duplicate-policy": {
+      "category": "D02",
+      "contract": "A required shared decision does not require synchronizing independent copies.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Change impact across actual callers and duplicated policies is not certified by syntax/default checks.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D02.variation": {
+      "category": "D02",
+      "contract": "Required caller variation remains expressible without patching shared internals.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ModifierWithoutDefault",
+        "detekt.Compose.MutableStateParam"
+      ],
+      "remaining": "Change impact across actual callers and duplicated policies is not certified by syntax/default checks.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D02.compatibility": {
+      "category": "D02",
+      "contract": "A contract change preserves the explicitly selected unaffected caller scenarios.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Change impact across actual callers and duplicated policies is not certified by syntax/default checks.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D03.reorder": {
+      "category": "D03",
+      "contract": "Required reordering changes assembly without repairing unrelated sibling coordinates.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ModifierNotUsedAtRoot",
+        "detekt.Compose.ModifierShouldBeForwardedToEveryBranch"
+      ],
+      "remaining": "Required assembly/retention/content growth needs caller and layout relationship evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D03.optional-child": {
+      "category": "D03",
+      "contract": "Adding or removing optional content preserves required sibling relationships.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ConditionHoist",
+        "detekt.Compose.ContentSlotReused",
+        "detekt.Compose.MultipleEmitters"
+      ],
+      "remaining": "Required assembly/retention/content growth needs caller and layout relationship evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D03.relocation": {
+      "category": "D03",
+      "contract": "A moved child retains its data and action contract without acquiring unrelated dependencies.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ViewModelForwarding",
+        "detekt.Compose.MutableStateParam"
+      ],
+      "remaining": "Required assembly/retention/content growth needs caller and layout relationship evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D03.content-growth": {
+      "category": "D03",
+      "contract": "Required content growth uses allocated space and the declared overflow policy.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Required assembly/retention/content growth needs caller and layout relationship evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D03.parent-placement": {
+      "category": "D03",
+      "contract": "The parent owns placement and the child owns its internal arrangement.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ModifierNotUsedAtRoot",
+        "detekt.Composer.RedundantSizeModifier"
+      ],
+      "remaining": "Required assembly/retention/content growth needs caller and layout relationship evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D03.layer-preservation": {
+      "category": "D03",
+      "contract": "Adding a temporary layer preserves the unaffected assembly required by the task.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ContentSlotReused",
+        "detekt.Compose.RememberMissing"
+      ],
+      "remaining": "Required assembly/retention/content growth needs caller and layout relationship evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.space-reservation": {
+      "category": "D04",
+      "contract": "Adjacent content reserves space according to its relationship rather than hidden text/glyph offsets.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.WhitespaceLayoutSpacer"
+      ],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.anchor-owner": {
+      "category": "D04",
+      "contract": "The required anchor is relative to the declared coordinate owner.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.conditional-anchor": {
+      "category": "D04",
+      "contract": "Conditional content preserves the declared anchor policy.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.overlay-relation": {
+      "category": "D04",
+      "contract": "Intentional overlap uses the actual dependent geometry rather than unrelated magic offsets.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.flow-relation": {
+      "category": "D04",
+      "contract": "Order and alignment express the required flow without incidental coupling.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.decoration-relation": {
+      "category": "D04",
+      "contract": "Decorative positioning follows its declared content owner and allowed overflow.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.width-contract": {
+      "category": "D04",
+      "contract": "Supported widths honor the host and component allocation contract.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.InvalidLayoutBounds",
+        "detekt.Compose.ModifierNotUsedAtRoot"
+      ],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.height-contract": {
+      "category": "D04",
+      "contract": "Supported heights honor the region/window contract.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.InvalidLayoutBounds",
+        "detekt.Compose.ModifierNotUsedAtRoot"
+      ],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.overflow": {
+      "category": "D04",
+      "contract": "Overflow follows the agreed priority and keeps required actions reachable.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.direction": {
+      "category": "D04",
+      "contract": "Supported direction changes preserve semantic placement and directional artwork.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.font-content": {
+      "category": "D04",
+      "contract": "Supported text/font variations preserve the declared legibility and control relationships.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.host-environment": {
+      "category": "D04",
+      "contract": "Layers inherit the intended density, font scale, direction and insets without contradictory compensation.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.outer-allocation": {
+      "category": "D04",
+      "contract": "Outer allocation has one effective owner.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ModifierNotUsedAtRoot",
+        "detekt.Compose.ModifierReused",
+        "detekt.Composer.RedundantSizeModifier"
+      ],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.intrinsic-size": {
+      "category": "D04",
+      "contract": "Intrinsic content or artwork size respects the declared allocation policy.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.modifier-precedence": {
+      "category": "D04",
+      "contract": "Modifier and dimension parameters have an unambiguous precedence at actual callers.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ModifierNotUsedAtRoot",
+        "detekt.Compose.ModifierShouldBeForwardedToEveryBranch",
+        "detekt.Composer.RedundantSizeModifier"
+      ],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.inner-size-change": {
+      "category": "D04",
+      "contract": "Changing an inner size does not require synchronizing unrelated outer constants.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.content-decoration": {
+      "category": "D04",
+      "contract": "Content measurement and decoration bounds have distinct declared roles.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D04.interaction-bounds": {
+      "category": "D04",
+      "contract": "Required interactive bounds remain consistent with the allocated visual/control region.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ModifierClickableOrder"
+      ],
+      "remaining": "Supported layout/overflow/environment behavior requires declared bounds and actual consumers, beyond local Modifier patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D06.declared-purpose": {
+      "category": "D06",
+      "contract": "The selected component name and behavior describe the same responsibility.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Semantic responsibility and owner lifetime beyond explicit ViewModel/coroutine patterns remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D06.input-scope": {
+      "category": "D06",
+      "contract": "Inputs correspond to the component responsibility without unrelated owner dependencies.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ViewModelForwarding",
+        "detekt.Compose.ViewModelInjection",
+        "detekt.Compose.MutableStateParam"
+      ],
+      "remaining": "Semantic responsibility and owner lifetime beyond explicit ViewModel/coroutine patterns remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D06.business-owner": {
+      "category": "D06",
+      "contract": "Rendering leaves do not acquire unrelated business transitions.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ViewModelInjection"
+      ],
+      "remaining": "Semantic responsibility and owner lifetime beyond explicit ViewModel/coroutine patterns remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D06.shared-frame": {
+      "category": "D06",
+      "contract": "A shared frame supports required variants without unrelated page-specific branches.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Semantic responsibility and owner lifetime beyond explicit ViewModel/coroutine patterns remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D06.effect-owner": {
+      "category": "D06",
+      "contract": "Side effects belong to the owner of their actual lifetime.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.CoroutineLaunchInComposition",
+        "detekt.Composer.StateWriteInComposition",
+        "detekt.Composer.BlockingCallInComposition"
+      ],
+      "remaining": "Semantic responsibility and owner lifetime beyond explicit ViewModel/coroutine patterns remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D06.variation-boundary": {
+      "category": "D06",
+      "contract": "Required variation is supplied through the declared boundary instead of hidden caller identity.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Semantic responsibility and owner lifetime beyond explicit ViewModel/coroutine patterns remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D08.semantic-alternatives": {
+      "category": "D08",
+      "contract": "Names and types distinguish required semantic alternatives and payload meanings.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.UntypedEventCallback",
+        "detekt.Compose.ParameterNaming",
+        "detekt.Composer.PositionalBooleanArguments"
+      ],
+      "remaining": "Used values/actions still need final-consumer and business-meaning evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D08.valid-combinations": {
+      "category": "D08",
+      "contract": "The public contract specifies or prevents invalid combinations exercised by the task.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.PositionalBooleanArguments"
+      ],
+      "remaining": "Used values/actions still need final-consumer and business-meaning evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D08.defaults": {
+      "category": "D08",
+      "contract": "Omitted business arguments preserve required caller behavior; syntax/convention-only defaults belong to acceptance or qualitative review.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.NondeterministicDefault",
+        "detekt.Composer.NoOpActionDefault"
+      ],
+      "remaining": "Used values/actions still need final-consumer and business-meaning evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D08.required-actions": {
+      "category": "D08",
+      "contract": "Required actions and data cannot silently become no-ops or hidden sentinel behavior.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.UnusedEventCallback",
+        "detekt.Composer.NoOpActionDefault",
+        "detekt.Composer.DroppedEventCallback"
+      ],
+      "remaining": "Used values/actions still need final-consumer and business-meaning evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D08.consumer-propagation": {
+      "category": "D08",
+      "contract": "Actual calls propagate the selected value, role or geometry to its final consumer.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.UnusedUiParameter",
+        "detekt.Composer.DroppedUiInput",
+        "detekt.Compose.ModifierNotUsedAtRoot"
+      ],
+      "remaining": "Used values/actions still need final-consumer and business-meaning evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D08.call-readability": {
+      "category": "D08",
+      "contract": "The selected call can be understood without reverse-engineering positional flags or magic tokens.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ContentTrailingLambda",
+        "detekt.Compose.ParameterNaming",
+        "detekt.Compose.LambdaParameterEventTrailing",
+        "detekt.Compose.ComposableParamOrder",
+        "detekt.Composer.PositionalBooleanArguments"
+      ],
+      "remaining": "Used values/actions still need final-consumer and business-meaning evidence.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D09.input-invariants": {
+      "category": "D09",
+      "contract": "Initial and later applicable inputs use the same required normalization rules.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Task-specific initialization, cancel/commit, race and retention contracts remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D09.write-authority": {
+      "category": "D09",
+      "contract": "Facts, drafts and derived values have clear write authority.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.StateWriteInComposition",
+        "detekt.Compose.MutableStateParam"
+      ],
+      "remaining": "Task-specific initialization, cancel/commit, race and retention contracts remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D09.cancel": {
+      "category": "D09",
+      "contract": "Cancellation preserves confirmed values and discards only the required transient changes.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Task-specific initialization, cancel/commit, race and retention contracts remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D09.commit": {
+      "category": "D09",
+      "contract": "Successful and failed commits update the required facts at the declared boundary.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Task-specific initialization, cancel/commit, race and retention contracts remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D09.transient-retention": {
+      "category": "D09",
+      "contract": "Temporary presentation retains or resets exactly the state required by the task.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ContentSlotReused",
+        "detekt.Compose.RememberMissing",
+        "detekt.Composer.UnkeyedRememberCapture"
+      ],
+      "remaining": "Task-specific initialization, cancel/commit, race and retention contracts remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D09.request-identity": {
+      "category": "D09",
+      "contract": "Completion belongs to the applicable request or round on actual reachable producer paths.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.LambdaParameterInRestartableEffect",
+        "detekt.Compose.StaleRememberUpdatedStateInRemember"
+      ],
+      "remaining": "Task-specific initialization, cancel/commit, race and retention contracts remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D09.lifetime-reset": {
+      "category": "D09",
+      "contract": "Removal, reload and re-entry preserve or reset state according to the declared lifetime.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.RememberMissing",
+        "detekt.Composer.UnkeyedRememberCapture"
+      ],
+      "remaining": "Task-specific initialization, cancel/commit, race and retention contracts remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D09.action-state": {
+      "category": "D09",
+      "contract": "Reachable action availability and pending/disabled states agree with current business facts.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Task-specific initialization, cancel/commit, race and retention contracts remain unproven.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D10.transition-trace": {
+      "category": "D10",
+      "contract": "The selected operation can be traced from event to intended outcome.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.complexity.CyclomaticComplexMethod",
+        "detekt.complexity.LongMethod",
+        "detekt.complexity.NestedBlockDepth"
+      ],
+      "remaining": "Thresholds/names do not establish semantic traceability of a selected operation.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D10.condition-meaning": {
+      "category": "D10",
+      "contract": "Branch conditions expose their business meaning.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.complexity.CyclomaticComplexMethod",
+        "detekt.complexity.NestedBlockDepth"
+      ],
+      "remaining": "Thresholds/names do not establish semantic traceability of a selected operation.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D10.write-trace": {
+      "category": "D10",
+      "contract": "Writes and their authority can be located along the selected path.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.StateWriteInComposition",
+        "detekt.Compose.MutableStateParam"
+      ],
+      "remaining": "Thresholds/names do not establish semantic traceability of a selected operation.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D10.layout-trace": {
+      "category": "D10",
+      "contract": "Layout relationships can be understood without decoding hidden numeric/glyph dependencies.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.RedundantSizeModifier",
+        "detekt.Compose.ModifierNotUsedAtRoot"
+      ],
+      "remaining": "Thresholds/names do not establish semantic traceability of a selected operation.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D10.call-trace": {
+      "category": "D10",
+      "contract": "Call contracts reveal semantic dependencies without opaque routing.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.complexity.LongParameterList",
+        "detekt.Compose.ViewModelForwarding",
+        "detekt.Compose.ParameterNaming"
+      ],
+      "remaining": "Thresholds/names do not establish semantic traceability of a selected operation.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D10.names-comments": {
+      "category": "D10",
+      "contract": "Names and active comments describe current behavior and sample purpose.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.naming.FunctionNaming",
+        "detekt.Compose.ComposableNaming",
+        "detekt.style.UnusedPrivateFunction"
+      ],
+      "remaining": "Thresholds/names do not establish semantic traceability of a selected operation.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D11.production-path": {
+      "category": "D11",
+      "contract": "Samples call production UI without a duplicate layout or Preview-only business behavior.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.PreviewDuplicateBody"
+      ],
+      "remaining": "Required production/sample coverage and indirect environment dependencies remain unproven; no mandatory Preview self-check.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D11.state-samples": {
+      "category": "D11",
+      "contract": "Samples cover the selected materially different required visual states.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Required production/sample coverage and indirect environment dependencies remain unproven; no mandatory Preview self-check.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D11.assembly-samples": {
+      "category": "D11",
+      "contract": "Selected assembly and supported boundary combinations are represented.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Required production/sample coverage and indirect environment dependencies remain unproven; no mandatory Preview self-check.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D11.render-inspection": {
+      "category": "D11",
+      "contract": "Required production Preview images were actually exported and inspected with source correspondence.",
+      "disposition": "retired",
+      "scored": false,
+      "status": "retired",
+      "static_support": [],
+      "remaining": "Required production/sample coverage and indirect environment dependencies remain unproven; no mandatory Preview self-check.",
+      "reason": "Default Preview rendering/export self-check was explicitly withdrawn. Explicit future rendering requests are separate tasks."
+    },
+    "D11.determinism": {
+      "category": "D11",
+      "contract": "Fixtures supply deterministic inputs without network/login or a second business state machine.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.NondeterministicPreview",
+        "detekt.Composer.PreviewEnvironmentDependency"
+      ],
+      "remaining": "Required production/sample coverage and indirect environment dependencies remain unproven; no mandatory Preview self-check.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D11.sample-maintenance": {
+      "category": "D11",
+      "contract": "Sample names, wrappers and organization keep required variations understandable and maintainable.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.PreviewAnnotationNaming",
+        "detekt.Compose.PreviewPublic"
+      ],
+      "remaining": "Required production/sample coverage and indirect environment dependencies remain unproven; no mandatory Preview self-check.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D12.work-placement": {
+      "category": "D12",
+      "contract": "Reachable expensive work or IO is outside repeated rendering or tied to actual inputs.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.BlockingCallInComposition",
+        "detekt.Composer.CoroutineLaunchInComposition"
+      ],
+      "remaining": "Workload, interprocedural work, cleanup and measured behavior exceed the local static patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D12.invalidation": {
+      "category": "D12",
+      "contract": "Derived computation/cache invalidation tracks relevant changes without stale values.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.UnkeyedRememberCapture",
+        "detekt.Compose.StaleRememberUpdatedStateInRemember"
+      ],
+      "remaining": "Workload, interprocedural work, cleanup and measured behavior exceed the local static patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D12.observation": {
+      "category": "D12",
+      "contract": "Frequent state reads affect the required rendering consumers without demonstrated avoidable broad work.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.MutableParams",
+        "detekt.Compose.VarsWithoutStateBacking",
+        "detekt.Compose.MutableStateAutoboxing"
+      ],
+      "remaining": "Workload, interprocedural work, cleanup and measured behavior exceed the local static patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D12.effect-lifetime": {
+      "category": "D12",
+      "contract": "Repeated effects and resources have bounded lifetime and required cleanup.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.CoroutineLaunchInComposition",
+        "detekt.Compose.UnnecessaryLaunchedEffect",
+        "detekt.empty-blocks.EmptyCatchBlock"
+      ],
+      "remaining": "Workload, interprocedural work, cleanup and measured behavior exceed the local static patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D12.list-identity": {
+      "category": "D12",
+      "contract": "The required list workload preserves identity and uses allocation appropriate to its scale.",
+      "disposition": "task-contract-review",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Composer.ConstantLazyItemKey"
+      ],
+      "remaining": "Workload, interprocedural work, cleanup and measured behavior exceed the local static patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D12.image-work": {
+      "category": "D12",
+      "contract": "Required media loading/decoding avoids demonstrated duplicate requests and inappropriate retained work.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [],
+      "remaining": "Workload, interprocedural work, cleanup and measured behavior exceed the local static patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    },
+    "D12.layout-work": {
+      "category": "D12",
+      "contract": "The selected layout workload avoids demonstrated redundant repeated measurement/work.",
+      "disposition": "external-runtime-acceptance",
+      "scored": false,
+      "status": "not-assessed-by-static-score",
+      "static_support": [
+        "detekt.Compose.ModifierComposed",
+        "detekt.Composer.RedundantSizeModifier"
+      ],
+      "remaining": "Workload, interprocedural work, cleanup and measured behavior exceed the local static patterns.",
+      "reason": "This broad obligation requires task-specific authority or observed behavior beyond the bounded detector contract. Retained for scoped delivery review, not a numeric static predicate."
+    }
+  },
+  "known_static_limits": [
+    {
+      "contract": "Unbounded or dynamic cross-library dependency propagation",
+      "status": "not-covered",
+      "reason": "Concrete source helper traversal is bounded to three levels; unknown paths are not certified."
+    },
+    {
+      "contract": "General production/Preview equivalence and near-duplicate layout detection",
+      "status": "not-covered",
+      "reason": "Only same-file token-identical nontrivial bodies are detected; semantic equivalence is not claimed."
+    },
+    {
+      "contract": "Metannotated/multipreview fixture dependency traversal",
+      "status": "not-covered",
+      "reason": "Custom fixture checks currently start from direct @Preview annotations only."
+    }
+  ]
+}

@@ -1,4 +1,0 @@
-interface:
-  display_name: "I Love Compose"
-  short_description: "Staged XML/DataBinding to Compose migration"
-  default_prompt: "Use $ilove-compose to migrate this existing Android View/DataBinding screen to Compose through staged legacy-truth, real-data, representative-slice, behavior, and final convergence gates."

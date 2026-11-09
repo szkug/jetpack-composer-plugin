@@ -1,0 +1,1371 @@
+{
+  "version": 12,
+  "scope": "Exact static detector contracts; external acceptance is maintained separately.",
+  "requirements": {
+    "static:detekt.Compose.ModifierClickableOrder": {
+      "category": "D04",
+      "contract": "Modifier order can change hit/visual bounds.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ModifierClickableOrder"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ModifierClickableOrder",
+          "kind": "static",
+          "rule": "detekt.Compose.ModifierClickableOrder",
+          "trigger": "Resolved source construct selected by detekt.Compose.ModifierClickableOrder",
+          "violation": "Modifier order can change hit/visual bounds.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#modifier"
+        }
+      ]
+    },
+    "static:detekt.Compose.ModifierComposed": {
+      "category": "D12",
+      "contract": "Legacy composed modifier adds composition overhead; actual cost unmeasured.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ModifierComposed"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ModifierComposed",
+          "kind": "static",
+          "rule": "detekt.Compose.ModifierComposed",
+          "trigger": "Resolved source construct selected by detekt.Compose.ModifierComposed",
+          "violation": "Legacy composed modifier adds composition overhead; actual cost unmeasured.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#modifier"
+        }
+      ]
+    },
+    "static:detekt.Compose.ModifierMissing": {
+      "category": "D14",
+      "contract": "Caller cannot provide a standard layout/behavior modifier.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ModifierMissing"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ModifierMissing",
+          "kind": "static",
+          "rule": "detekt.Compose.ModifierMissing",
+          "trigger": "Resolved source construct selected by detekt.Compose.ModifierMissing",
+          "violation": "Caller cannot provide a standard layout/behavior modifier.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#modifier"
+        }
+      ]
+    },
+    "static:detekt.Compose.ModifierNaming": {
+      "category": "D14",
+      "contract": "Modifier parameter naming convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ModifierNaming"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ModifierNaming",
+          "kind": "static",
+          "rule": "detekt.Compose.ModifierNaming",
+          "trigger": "Resolved source construct selected by detekt.Compose.ModifierNaming",
+          "violation": "Modifier parameter naming convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#modifier"
+        }
+      ]
+    },
+    "static:detekt.Compose.ModifierNotUsedAtRoot": {
+      "category": "D04",
+      "contract": "Caller allocation can be applied to the wrong layout owner.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ModifierNotUsedAtRoot"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ModifierNotUsedAtRoot",
+          "kind": "static",
+          "rule": "detekt.Compose.ModifierNotUsedAtRoot",
+          "trigger": "Resolved source construct selected by detekt.Compose.ModifierNotUsedAtRoot",
+          "violation": "Caller allocation can be applied to the wrong layout owner.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#modifier"
+        }
+      ]
+    },
+    "static:detekt.Compose.ModifierReused": {
+      "category": "D04",
+      "contract": "Caller modifier contract can affect multiple children.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ModifierReused"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ModifierReused",
+          "kind": "static",
+          "rule": "detekt.Compose.ModifierReused",
+          "trigger": "Resolved source construct selected by detekt.Compose.ModifierReused",
+          "violation": "Caller modifier contract can affect multiple children.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#modifier"
+        }
+      ]
+    },
+    "static:detekt.Compose.ModifierShouldBeForwardedToEveryBranch": {
+      "category": "D04",
+      "contract": "A branch drops caller layout behavior.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ModifierShouldBeForwardedToEveryBranch"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ModifierShouldBeForwardedToEveryBranch",
+          "kind": "static",
+          "rule": "detekt.Compose.ModifierShouldBeForwardedToEveryBranch",
+          "trigger": "Resolved source construct selected by detekt.Compose.ModifierShouldBeForwardedToEveryBranch",
+          "violation": "A branch drops caller layout behavior.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#modifier"
+        }
+      ]
+    },
+    "static:detekt.Compose.ModifierWithoutDefault": {
+      "category": "D14",
+      "contract": "Caller must provide a normally optional layout argument.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ModifierWithoutDefault"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ModifierWithoutDefault",
+          "kind": "static",
+          "rule": "detekt.Compose.ModifierWithoutDefault",
+          "trigger": "Resolved source construct selected by detekt.Compose.ModifierWithoutDefault",
+          "violation": "Caller must provide a normally optional layout argument.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#modifier"
+        }
+      ]
+    },
+    "static:detekt.Compose.ComposableAnnotationNaming": {
+      "category": "D14",
+      "contract": "Composable annotation naming convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ComposableAnnotationNaming"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ComposableAnnotationNaming",
+          "kind": "static",
+          "rule": "detekt.Compose.ComposableAnnotationNaming",
+          "trigger": "Resolved source construct selected by detekt.Compose.ComposableAnnotationNaming",
+          "violation": "Composable annotation naming convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#api-and-content"
+        }
+      ]
+    },
+    "static:detekt.Compose.ComposableNaming": {
+      "category": "D14",
+      "contract": "Composable naming convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ComposableNaming"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ComposableNaming",
+          "kind": "static",
+          "rule": "detekt.Compose.ComposableNaming",
+          "trigger": "Resolved source construct selected by detekt.Compose.ComposableNaming",
+          "violation": "Composable naming convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#api-and-content"
+        }
+      ]
+    },
+    "static:detekt.Compose.ComposableParamOrder": {
+      "category": "D14",
+      "contract": "Composable parameter ordering convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ComposableParamOrder"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ComposableParamOrder",
+          "kind": "static",
+          "rule": "detekt.Compose.ComposableParamOrder",
+          "trigger": "Resolved source construct selected by detekt.Compose.ComposableParamOrder",
+          "violation": "Composable parameter ordering convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#api-and-content"
+        }
+      ]
+    },
+    "static:detekt.Compose.ConditionHoist": {
+      "category": "D03",
+      "contract": "Branch assembly duplicates decisions; correctness is not inferred.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ConditionHoist"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ConditionHoist",
+          "kind": "static",
+          "rule": "detekt.Compose.ConditionHoist",
+          "trigger": "Resolved source construct selected by detekt.Compose.ConditionHoist",
+          "violation": "Branch assembly duplicates decisions; correctness is not inferred.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#api-and-content"
+        }
+      ]
+    },
+    "static:detekt.Compose.ContentEmitterReturningValues": {
+      "category": "D03",
+      "contract": "Mixes UI emission with returned values and ambiguous ownership.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ContentEmitterReturningValues"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ContentEmitterReturningValues",
+          "kind": "static",
+          "rule": "detekt.Compose.ContentEmitterReturningValues",
+          "trigger": "Resolved source construct selected by detekt.Compose.ContentEmitterReturningValues",
+          "violation": "Mixes UI emission with returned values and ambiguous ownership.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#api-and-content"
+        }
+      ]
+    },
+    "static:detekt.Compose.ContentSlotReused": {
+      "category": "D03",
+      "contract": "Slot reuse changes composition identity and retention expectations.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ContentSlotReused"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ContentSlotReused",
+          "kind": "static",
+          "rule": "detekt.Compose.ContentSlotReused",
+          "trigger": "Resolved source construct selected by detekt.Compose.ContentSlotReused",
+          "violation": "Slot reuse changes composition identity and retention expectations.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#api-and-content"
+        }
+      ]
+    },
+    "static:detekt.Compose.ContentTrailingLambda": {
+      "category": "D08",
+      "contract": "Slot placement is a call-site convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ContentTrailingLambda"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ContentTrailingLambda",
+          "kind": "static",
+          "rule": "detekt.Compose.ContentTrailingLambda",
+          "trigger": "Resolved source construct selected by detekt.Compose.ContentTrailingLambda",
+          "violation": "Slot placement is a call-site convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#api-and-content"
+        }
+      ]
+    },
+    "static:detekt.Compose.DefaultsVisibility": {
+      "category": "D02",
+      "contract": "Default visibility differs from the API visibility contract.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.DefaultsVisibility"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.DefaultsVisibility",
+          "kind": "static",
+          "rule": "detekt.Compose.DefaultsVisibility",
+          "trigger": "Resolved source construct selected by detekt.Compose.DefaultsVisibility",
+          "violation": "Default visibility differs from the API visibility contract.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#defaults-effects-and-annotations"
+        }
+      ]
+    },
+    "static:detekt.Compose.LambdaParameterEventTrailing": {
+      "category": "D08",
+      "contract": "Event/slot call-site ambiguity is a convention risk.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.LambdaParameterEventTrailing"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.LambdaParameterEventTrailing",
+          "kind": "static",
+          "rule": "detekt.Compose.LambdaParameterEventTrailing",
+          "trigger": "Resolved source construct selected by detekt.Compose.LambdaParameterEventTrailing",
+          "violation": "Event/slot call-site ambiguity is a convention risk.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#defaults-effects-and-annotations"
+        }
+      ]
+    },
+    "static:detekt.Compose.MultipleEmitters": {
+      "category": "D03",
+      "contract": "Multiple root emitters complicate layout ownership; not inherently a crash.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.MultipleEmitters"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.MultipleEmitters",
+          "kind": "static",
+          "rule": "detekt.Compose.MultipleEmitters",
+          "trigger": "Resolved source construct selected by detekt.Compose.MultipleEmitters",
+          "violation": "Multiple root emitters complicate layout ownership; not inherently a crash.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#state-and-events"
+        }
+      ]
+    },
+    "static:detekt.Compose.ParameterNaming": {
+      "category": "D08",
+      "contract": "Parameter naming convention, not semantic proof.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ParameterNaming"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ParameterNaming",
+          "kind": "static",
+          "rule": "detekt.Compose.ParameterNaming",
+          "trigger": "Resolved source construct selected by detekt.Compose.ParameterNaming",
+          "violation": "Parameter naming convention, not semantic proof.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#state-and-events"
+        }
+      ]
+    },
+    "static:detekt.Compose.MutableParams": {
+      "category": "D08",
+      "contract": "Unobservable mutable input can bypass expected UI invalidation.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.MutableParams"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.MutableParams",
+          "kind": "static",
+          "rule": "detekt.Compose.MutableParams",
+          "trigger": "Resolved source construct selected by detekt.Compose.MutableParams",
+          "violation": "Unobservable mutable input can bypass expected UI invalidation.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#state-and-events"
+        }
+      ]
+    },
+    "static:detekt.Compose.MutableStateAutoboxing": {
+      "category": "D12",
+      "contract": "Optional optimization hint without demonstrated behavioral failure.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.MutableStateAutoboxing"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.MutableStateAutoboxing",
+          "kind": "static",
+          "rule": "detekt.Compose.MutableStateAutoboxing",
+          "trigger": "Resolved source construct selected by detekt.Compose.MutableStateAutoboxing",
+          "violation": "Optional optimization hint without demonstrated behavioral failure.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#state-and-events"
+        }
+      ]
+    },
+    "static:detekt.Compose.MutableStateParam": {
+      "category": "D08",
+      "contract": "Public writable state exposes write authority beyond the caller.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.MutableStateParam"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.MutableStateParam",
+          "kind": "static",
+          "rule": "detekt.Compose.MutableStateParam",
+          "trigger": "Resolved source construct selected by detekt.Compose.MutableStateParam",
+          "violation": "Public writable state exposes write authority beyond the caller.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#state-and-events"
+        }
+      ]
+    },
+    "static:detekt.Compose.RememberContentMissing": {
+      "category": "D09",
+      "contract": "Movable content identity is recreated during recomposition.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.RememberContentMissing"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.RememberContentMissing",
+          "kind": "static",
+          "rule": "detekt.Compose.RememberContentMissing",
+          "trigger": "Resolved source construct selected by detekt.Compose.RememberContentMissing",
+          "violation": "Movable content identity is recreated during recomposition.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#preview-and-retained-values"
+        }
+      ]
+    },
+    "static:detekt.Compose.RememberMissing": {
+      "category": "D09",
+      "contract": "Composition-created state loses stable identity.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.RememberMissing"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.RememberMissing",
+          "kind": "static",
+          "rule": "detekt.Compose.RememberMissing",
+          "trigger": "Resolved source construct selected by detekt.Compose.RememberMissing",
+          "violation": "Composition-created state loses stable identity.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#preview-and-retained-values"
+        }
+      ]
+    },
+    "static:detekt.Compose.StaleRememberUpdatedStateInRemember": {
+      "category": "D09",
+      "contract": "Captured value can stop reflecting current input.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.StaleRememberUpdatedStateInRemember"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.StaleRememberUpdatedStateInRemember",
+          "kind": "static",
+          "rule": "detekt.Compose.StaleRememberUpdatedStateInRemember",
+          "trigger": "Resolved source construct selected by detekt.Compose.StaleRememberUpdatedStateInRemember",
+          "violation": "Captured value can stop reflecting current input.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#preview-and-retained-values"
+        }
+      ]
+    },
+    "static:detekt.Compose.StateParam": {
+      "category": "D09",
+      "contract": "State wrapper exposes observation policy in an API boundary.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.StateParam"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.StateParam",
+          "kind": "static",
+          "rule": "detekt.Compose.StateParam",
+          "trigger": "Resolved source construct selected by detekt.Compose.StateParam",
+          "violation": "State wrapper exposes observation policy in an API boundary.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#observation-and-dependencies"
+        }
+      ]
+    },
+    "static:detekt.Compose.VarsWithoutStateBacking": {
+      "category": "D09",
+      "contract": "Mutable UI state lacks observable backing.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.VarsWithoutStateBacking"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.VarsWithoutStateBacking",
+          "kind": "static",
+          "rule": "detekt.Compose.VarsWithoutStateBacking",
+          "trigger": "Resolved source construct selected by detekt.Compose.VarsWithoutStateBacking",
+          "violation": "Mutable UI state lacks observable backing.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#observation-and-dependencies"
+        }
+      ]
+    },
+    "static:detekt.Compose.LambdaParameterInRestartableEffect": {
+      "category": "D09",
+      "contract": "Effect capture can retain an outdated callback.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.LambdaParameterInRestartableEffect"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.LambdaParameterInRestartableEffect",
+          "kind": "static",
+          "rule": "detekt.Compose.LambdaParameterInRestartableEffect",
+          "trigger": "Resolved source construct selected by detekt.Compose.LambdaParameterInRestartableEffect",
+          "violation": "Effect capture can retain an outdated callback.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#defaults-effects-and-annotations"
+        }
+      ]
+    },
+    "static:detekt.Compose.UnnecessaryLaunchedEffect": {
+      "category": "D12",
+      "contract": "Unnecessary effect scheduling/lifetime complexity.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.UnnecessaryLaunchedEffect"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.UnnecessaryLaunchedEffect",
+          "kind": "static",
+          "rule": "detekt.Compose.UnnecessaryLaunchedEffect",
+          "trigger": "Resolved source construct selected by detekt.Compose.UnnecessaryLaunchedEffect",
+          "violation": "Unnecessary effect scheduling/lifetime complexity.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#observation-and-dependencies"
+        }
+      ]
+    },
+    "static:detekt.Compose.CompositionLocalNaming": {
+      "category": "D14",
+      "contract": "CompositionLocal naming convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.CompositionLocalNaming"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.CompositionLocalNaming",
+          "kind": "static",
+          "rule": "detekt.Compose.CompositionLocalNaming",
+          "trigger": "Resolved source construct selected by detekt.Compose.CompositionLocalNaming",
+          "violation": "CompositionLocal naming convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#api-and-content"
+        }
+      ]
+    },
+    "static:detekt.Compose.ViewModelForwarding": {
+      "category": "D06",
+      "contract": "Child depends on a broader owner than its state/event contract.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ViewModelForwarding"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ViewModelForwarding",
+          "kind": "static",
+          "rule": "detekt.Compose.ViewModelForwarding",
+          "trigger": "Resolved source construct selected by detekt.Compose.ViewModelForwarding",
+          "violation": "Child depends on a broader owner than its state/event contract.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#observation-and-dependencies"
+        }
+      ]
+    },
+    "static:detekt.Compose.ViewModelInjection": {
+      "category": "D06",
+      "contract": "Dependency acquisition is hidden in a UI contract.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.ViewModelInjection"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.ViewModelInjection",
+          "kind": "static",
+          "rule": "detekt.Compose.ViewModelInjection",
+          "trigger": "Resolved source construct selected by detekt.Compose.ViewModelInjection",
+          "violation": "Dependency acquisition is hidden in a UI contract.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#observation-and-dependencies"
+        }
+      ]
+    },
+    "static:detekt.Compose.PreviewAnnotationNaming": {
+      "category": "D11",
+      "contract": "Multipreview naming convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.PreviewAnnotationNaming"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.PreviewAnnotationNaming",
+          "kind": "static",
+          "rule": "detekt.Compose.PreviewAnnotationNaming",
+          "trigger": "Resolved source construct selected by detekt.Compose.PreviewAnnotationNaming",
+          "violation": "Multipreview naming convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#preview-and-retained-values"
+        }
+      ]
+    },
+    "static:detekt.Compose.PreviewPublic": {
+      "category": "D11",
+      "contract": "Fixture visibility convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.PreviewPublic"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.PreviewPublic",
+          "kind": "static",
+          "rule": "detekt.Compose.PreviewPublic",
+          "trigger": "Resolved source construct selected by detekt.Compose.PreviewPublic",
+          "violation": "Fixture visibility convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#preview-and-retained-values"
+        }
+      ]
+    },
+    "static:detekt.Compose.InvalidReadOnlyComposable": {
+      "category": "D14",
+      "contract": "Read-only annotation claims a stronger contract than the implementation.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.InvalidReadOnlyComposable"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.InvalidReadOnlyComposable",
+          "kind": "static",
+          "rule": "detekt.Compose.InvalidReadOnlyComposable",
+          "trigger": "Resolved source construct selected by detekt.Compose.InvalidReadOnlyComposable",
+          "violation": "Read-only annotation claims a stronger contract than the implementation.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#defaults-effects-and-annotations"
+        }
+      ]
+    },
+    "static:detekt.Compose.MissingNonRestartableComposable": {
+      "category": "D12",
+      "contract": "Optional optimization hint without demonstrated behavioral failure.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.MissingNonRestartableComposable"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.MissingNonRestartableComposable",
+          "kind": "static",
+          "rule": "detekt.Compose.MissingNonRestartableComposable",
+          "trigger": "Resolved source construct selected by detekt.Compose.MissingNonRestartableComposable",
+          "violation": "Optional optimization hint without demonstrated behavioral failure.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#defaults-effects-and-annotations"
+        }
+      ]
+    },
+    "static:detekt.Compose.MissingReadOnlyComposable": {
+      "category": "D12",
+      "contract": "Optional optimization hint without demonstrated behavioral failure.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.MissingReadOnlyComposable"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.MissingReadOnlyComposable",
+          "kind": "static",
+          "rule": "detekt.Compose.MissingReadOnlyComposable",
+          "trigger": "Resolved source construct selected by detekt.Compose.MissingReadOnlyComposable",
+          "violation": "Optional optimization hint without demonstrated behavioral failure.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#defaults-effects-and-annotations"
+        }
+      ]
+    },
+    "static:detekt.Compose.UnnecessaryComposable": {
+      "category": "D14",
+      "contract": "Optional optimization hint without demonstrated behavioral failure.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Compose.UnnecessaryComposable"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Compose.UnnecessaryComposable",
+          "kind": "static",
+          "rule": "detekt.Compose.UnnecessaryComposable",
+          "trigger": "Resolved source construct selected by detekt.Compose.UnnecessaryComposable",
+          "violation": "Optional optimization hint without demonstrated behavioral failure.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "compose-rules.md#observation-and-dependencies"
+        }
+      ]
+    },
+    "static:detekt.complexity.CyclomaticComplexMethod": {
+      "category": "D10",
+      "contract": "Branch complexity exceeds the frozen maintainability threshold.",
+      "coverage": "static",
+      "rules": [
+        "detekt.complexity.CyclomaticComplexMethod"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.complexity.CyclomaticComplexMethod",
+          "kind": "static",
+          "rule": "detekt.complexity.CyclomaticComplexMethod",
+          "trigger": "Resolved source construct selected by detekt.complexity.CyclomaticComplexMethod",
+          "violation": "Branch complexity exceeds the frozen maintainability threshold.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "detekt-rules.md#predicate-inventory"
+        }
+      ]
+    },
+    "static:detekt.complexity.LongMethod": {
+      "category": "D10",
+      "contract": "Method length exceeds the frozen structure threshold.",
+      "coverage": "static",
+      "rules": [
+        "detekt.complexity.LongMethod"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.complexity.LongMethod",
+          "kind": "static",
+          "rule": "detekt.complexity.LongMethod",
+          "trigger": "Resolved source construct selected by detekt.complexity.LongMethod",
+          "violation": "Method length exceeds the frozen structure threshold.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "detekt-rules.md#predicate-inventory"
+        }
+      ]
+    },
+    "static:detekt.complexity.NestedBlockDepth": {
+      "category": "D10",
+      "contract": "Nesting exceeds the frozen readability threshold.",
+      "coverage": "static",
+      "rules": [
+        "detekt.complexity.NestedBlockDepth"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.complexity.NestedBlockDepth",
+          "kind": "static",
+          "rule": "detekt.complexity.NestedBlockDepth",
+          "trigger": "Resolved source construct selected by detekt.complexity.NestedBlockDepth",
+          "violation": "Nesting exceeds the frozen readability threshold.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "detekt-rules.md#predicate-inventory"
+        }
+      ]
+    },
+    "static:detekt.complexity.TooManyFunctions": {
+      "category": "D10",
+      "contract": "Function count in the reported container exceeds its frozen maintainability threshold.",
+      "coverage": "static",
+      "rules": [
+        "detekt.complexity.TooManyFunctions"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.complexity.TooManyFunctions",
+          "kind": "static",
+          "rule": "detekt.complexity.TooManyFunctions",
+          "trigger": "Resolved source construct selected by detekt.complexity.TooManyFunctions",
+          "violation": "Function count in the reported container exceeds its frozen maintainability threshold.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "detekt-rules.md#predicate-inventory"
+        }
+      ]
+    },
+    "static:detekt.complexity.LongParameterList": {
+      "category": "D10",
+      "contract": "Required argument count exceeds the frozen API threshold.",
+      "coverage": "static",
+      "rules": [
+        "detekt.complexity.LongParameterList"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.complexity.LongParameterList",
+          "kind": "static",
+          "rule": "detekt.complexity.LongParameterList",
+          "trigger": "Resolved source construct selected by detekt.complexity.LongParameterList",
+          "violation": "Required argument count exceeds the frozen API threshold.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "detekt-rules.md#predicate-inventory"
+        }
+      ]
+    },
+    "static:detekt.naming.FunctionNaming": {
+      "category": "D10",
+      "contract": "Function naming convention.",
+      "coverage": "static",
+      "rules": [
+        "detekt.naming.FunctionNaming"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.naming.FunctionNaming",
+          "kind": "static",
+          "rule": "detekt.naming.FunctionNaming",
+          "trigger": "Resolved source construct selected by detekt.naming.FunctionNaming",
+          "violation": "Function naming convention.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "detekt-rules.md#predicate-inventory"
+        }
+      ]
+    },
+    "static:detekt.empty-blocks.EmptyCatchBlock": {
+      "category": "D10",
+      "contract": "Caught failures disappear without handling or propagation.",
+      "coverage": "static",
+      "rules": [
+        "detekt.empty-blocks.EmptyCatchBlock"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.empty-blocks.EmptyCatchBlock",
+          "kind": "static",
+          "rule": "detekt.empty-blocks.EmptyCatchBlock",
+          "trigger": "Resolved source construct selected by detekt.empty-blocks.EmptyCatchBlock",
+          "violation": "Caught failures disappear without handling or propagation.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "detekt-rules.md#predicate-inventory"
+        }
+      ]
+    },
+    "static:detekt.Composer.UntypedEventCallback": {
+      "category": "D01",
+      "contract": "Any payload removes compile-time event shape constraints.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.UntypedEventCallback"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.UntypedEventCallback",
+          "kind": "static",
+          "rule": "detekt.Composer.UntypedEventCallback",
+          "trigger": "Resolved source construct selected by detekt.Composer.UntypedEventCallback",
+          "violation": "Any payload removes compile-time event shape constraints.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#untypedeventcallback"
+        }
+      ]
+    },
+    "static:detekt.Composer.NondeterministicDefault": {
+      "category": "D02",
+      "contract": "Omitted argument changes on reevaluation instead of explicit input lifetime.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.NondeterministicDefault"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.NondeterministicDefault",
+          "kind": "static",
+          "rule": "detekt.Composer.NondeterministicDefault",
+          "trigger": "Resolved source construct selected by detekt.Composer.NondeterministicDefault",
+          "violation": "Omitted argument changes on reevaluation instead of explicit input lifetime.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#nondeterministicdefault"
+        }
+      ]
+    },
+    "static:detekt.Composer.NoOpActionDefault": {
+      "category": "D08",
+      "contract": "Required-looking action can silently do nothing.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.NoOpActionDefault"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.NoOpActionDefault",
+          "kind": "static",
+          "rule": "detekt.Composer.NoOpActionDefault",
+          "trigger": "Resolved source construct selected by detekt.Composer.NoOpActionDefault",
+          "violation": "Required-looking action can silently do nothing.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#noopactiondefault"
+        }
+      ]
+    },
+    "static:detekt.Composer.PositionalBooleanArguments": {
+      "category": "D08",
+      "contract": "Name Boolean arguments when multiple flags are supplied at a Compose call site.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.PositionalBooleanArguments"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.PositionalBooleanArguments",
+          "kind": "static",
+          "rule": "detekt.Composer.PositionalBooleanArguments",
+          "trigger": "Resolved Composable call supplies at least two Boolean arguments, with at least one unnamed.",
+          "violation": "Unnamed Boolean argument roles require reconstructing the callee parameter order.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#positionalbooleanarguments"
+        }
+      ]
+    },
+    "static:detekt.Composer.RedundantSizeModifier": {
+      "category": "D04",
+      "contract": "Identical consecutive constant allocation is redundant.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.RedundantSizeModifier"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.RedundantSizeModifier",
+          "kind": "static",
+          "rule": "detekt.Composer.RedundantSizeModifier",
+          "trigger": "Resolved source construct selected by detekt.Composer.RedundantSizeModifier",
+          "violation": "Identical consecutive constant allocation is redundant.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#redundantsizemodifier"
+        }
+      ]
+    },
+    "static:detekt.Composer.BlockingCallInComposition": {
+      "category": "D12",
+      "contract": "Synchronous blocking or IO is performed during composition.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.BlockingCallInComposition"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.BlockingCallInComposition",
+          "kind": "static",
+          "rule": "detekt.Composer.BlockingCallInComposition",
+          "trigger": "Resolved source construct selected by detekt.Composer.BlockingCallInComposition",
+          "violation": "Synchronous blocking or IO is performed during composition.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#blockingcallincomposition"
+        }
+      ]
+    },
+    "static:detekt.Composer.NondeterministicPreview": {
+      "category": "D11",
+      "contract": "Fixture cannot be reproduced from fixed inputs.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.NondeterministicPreview"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.NondeterministicPreview",
+          "kind": "static",
+          "rule": "detekt.Composer.NondeterministicPreview",
+          "trigger": "Resolved source construct selected by detekt.Composer.NondeterministicPreview",
+          "violation": "Fixture cannot be reproduced from fixed inputs.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#nondeterministicpreview"
+        }
+      ]
+    },
+    "static:detekt.Composer.PreviewEnvironmentDependency": {
+      "category": "D11",
+      "contract": "Fixture depends on external runtime environment.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.PreviewEnvironmentDependency"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.PreviewEnvironmentDependency",
+          "kind": "static",
+          "rule": "detekt.Composer.PreviewEnvironmentDependency",
+          "trigger": "Resolved source construct selected by detekt.Composer.PreviewEnvironmentDependency",
+          "violation": "Fixture depends on external runtime environment.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#previewenvironmentdependency"
+        }
+      ]
+    },
+    "static:detekt.style.UnusedPrivateFunction": {
+      "category": "D10",
+      "contract": "Dead private implementation increases maintenance noise.",
+      "coverage": "static",
+      "rules": [
+        "detekt.style.UnusedPrivateFunction"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.style.UnusedPrivateFunction",
+          "kind": "static",
+          "rule": "detekt.style.UnusedPrivateFunction",
+          "trigger": "Resolved source construct selected by detekt.style.UnusedPrivateFunction",
+          "violation": "Dead private implementation increases maintenance noise.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "detekt-rules.md#predicate-inventory"
+        }
+      ]
+    },
+    "static:detekt.Composer.UnusedEventCallback": {
+      "category": "D01",
+      "contract": "Declared event is never consumed by the implementation.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.UnusedEventCallback"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.UnusedEventCallback",
+          "kind": "static",
+          "rule": "detekt.Composer.UnusedEventCallback",
+          "trigger": "Resolved source construct selected by detekt.Composer.UnusedEventCallback",
+          "violation": "Declared event is never consumed by the implementation.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#unusedeventcallback"
+        }
+      ]
+    },
+    "static:detekt.Composer.UnusedUiParameter": {
+      "category": "D08",
+      "contract": "Declared UI data is never consumed by the implementation.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.UnusedUiParameter"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.UnusedUiParameter",
+          "kind": "static",
+          "rule": "detekt.Composer.UnusedUiParameter",
+          "trigger": "Resolved source construct selected by detekt.Composer.UnusedUiParameter",
+          "violation": "Declared UI data is never consumed by the implementation.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#unuseduiparameter"
+        }
+      ]
+    },
+    "static:detekt.Composer.StateWriteInComposition": {
+      "category": "D09",
+      "contract": "Composition directly writes snapshot state, risking feedback/repeated mutation.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.StateWriteInComposition"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.StateWriteInComposition",
+          "kind": "static",
+          "rule": "detekt.Composer.StateWriteInComposition",
+          "trigger": "Resolved source construct selected by detekt.Composer.StateWriteInComposition",
+          "violation": "Composition directly writes snapshot state, risking feedback/repeated mutation.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#statewriteincomposition"
+        }
+      ]
+    },
+    "static:detekt.Composer.CoroutineLaunchInComposition": {
+      "category": "D09",
+      "contract": "Composition directly starts asynchronous work without effect/event lifetime.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.CoroutineLaunchInComposition"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.CoroutineLaunchInComposition",
+          "kind": "static",
+          "rule": "detekt.Composer.CoroutineLaunchInComposition",
+          "trigger": "Resolved source construct selected by detekt.Composer.CoroutineLaunchInComposition",
+          "violation": "Composition directly starts asynchronous work without effect/event lifetime.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#coroutinelaunchincomposition"
+        }
+      ]
+    },
+    "static:detekt.Composer.InvalidLayoutBounds": {
+      "category": "D04",
+      "contract": "Constant padding or min/max violates the declared layout bounds.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.InvalidLayoutBounds"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.InvalidLayoutBounds",
+          "kind": "static",
+          "rule": "detekt.Composer.InvalidLayoutBounds",
+          "trigger": "Resolved source construct selected by detekt.Composer.InvalidLayoutBounds",
+          "violation": "Constant padding or min/max violates the declared layout bounds.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#invalidlayoutbounds"
+        }
+      ]
+    },
+    "static:detekt.Composer.ConstantLazyItemKey": {
+      "category": "D12",
+      "contract": "A constant key duplicates identity for multi-item workloads.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.ConstantLazyItemKey"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.ConstantLazyItemKey",
+          "kind": "static",
+          "rule": "detekt.Composer.ConstantLazyItemKey",
+          "trigger": "Resolved source construct selected by detekt.Composer.ConstantLazyItemKey",
+          "violation": "A constant key duplicates identity for multi-item workloads.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#constantlazyitemkey"
+        }
+      ]
+    },
+    "static:detekt.Composer.UnkeyedRememberCapture": {
+      "category": "D09",
+      "contract": "Direct parameter capture retains its first value without an invalidation key.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.UnkeyedRememberCapture"
+      ],
+      "remaining": "Only the exact detector predicate and documented limitations; no broader semantic claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.UnkeyedRememberCapture",
+          "kind": "static",
+          "rule": "detekt.Composer.UnkeyedRememberCapture",
+          "trigger": "Resolved source construct selected by detekt.Composer.UnkeyedRememberCapture",
+          "violation": "Direct parameter capture retains its first value without an invalidation key.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#unkeyedremembercapture"
+        }
+      ]
+    },
+    "static:detekt.Composer.DroppedEventCallback": {
+      "category": "D01",
+      "kind": "detector-contract",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.DroppedEventCallback"
+      ],
+      "contract": "Resolved forwarding reaches a concrete source helper that never consumes the input, within the configured trace depth.",
+      "remaining": "Only the bounded detector predicate, not complete consumer reachability.",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.DroppedEventCallback",
+          "kind": "static",
+          "rule": "detekt.Composer.DroppedEventCallback",
+          "trigger": "Resolved source construct selected by detekt.Composer.DroppedEventCallback",
+          "violation": "Resolved forwarding reaches a concrete source helper that never consumes the input, within the configured trace depth.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#droppedeventcallback"
+        }
+      ]
+    },
+    "static:detekt.Composer.DroppedUiInput": {
+      "category": "D08",
+      "kind": "detector-contract",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.DroppedUiInput"
+      ],
+      "contract": "Resolved forwarding reaches a concrete source helper that never consumes the input, within the configured trace depth.",
+      "remaining": "Only the bounded detector predicate, not complete consumer reachability.",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.DroppedUiInput",
+          "kind": "static",
+          "rule": "detekt.Composer.DroppedUiInput",
+          "trigger": "Resolved source construct selected by detekt.Composer.DroppedUiInput",
+          "violation": "Resolved forwarding reaches a concrete source helper that never consumes the input, within the configured trace depth.",
+          "scope": "Exact bundled YAML, rule source/version and documented analysis boundaries; silence is not proof outside that scope.",
+          "specification": "custom-compose-rules.md#droppeduiinput"
+        }
+      ]
+    },
+    "static:detekt.Composer.WhitespaceLayoutSpacer": {
+      "category": "D04",
+      "contract": "Whitespace-only Text couples spacing to glyph metrics rather than a layout allocation.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.WhitespaceLayoutSpacer"
+      ],
+      "remaining": "Only the explicit predicate and limits; no whole-layout or production-equivalence claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.WhitespaceLayoutSpacer",
+          "kind": "static",
+          "rule": "detekt.Composer.WhitespaceLayoutSpacer",
+          "trigger": "Whitespace-only Text couples spacing to glyph metrics rather than a layout allocation.",
+          "violation": "Whitespace-only Text couples spacing to glyph metrics rather than a layout allocation.",
+          "scope": "Pinned configuration and documented analysis boundaries.",
+          "specification": "custom-compose-rules.md#whitespacelayoutspacer"
+        }
+      ]
+    },
+    "static:detekt.Composer.PreviewDuplicateBody": {
+      "category": "D11",
+      "contract": "Existing Preview duplicates a nontrivial production body instead of delegating.",
+      "coverage": "static",
+      "rules": [
+        "detekt.Composer.PreviewDuplicateBody"
+      ],
+      "remaining": "Only the explicit predicate and limits; no whole-layout or production-equivalence claim.",
+      "kind": "detector-contract",
+      "atoms": [
+        {
+          "id": "predicate:detekt.Composer.PreviewDuplicateBody",
+          "kind": "static",
+          "rule": "detekt.Composer.PreviewDuplicateBody",
+          "trigger": "Existing Preview duplicates a nontrivial production body instead of delegating.",
+          "violation": "Existing Preview duplicates a nontrivial production body instead of delegating.",
+          "scope": "Pinned configuration and documented analysis boundaries.",
+          "specification": "custom-compose-rules.md#previewduplicatebody"
+        }
+      ]
+    }
+  }
+}

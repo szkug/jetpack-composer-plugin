@@ -1,0 +1,366 @@
+{
+  "version": 1,
+  "coordinate": "io.nlopez.compose.rules:detekt:0.6.8",
+  "detekt_version": "2.0.0-alpha.6",
+  "source": "https://github.com/mrmans0n/compose-rules/releases/tag/v0.6.8",
+  "rules": {
+    "detekt.Compose.ModifierClickableOrder": {
+      "contract": "L15",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ModifierComposed": {
+      "contract": "L15",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeModifierComposed",
+        "UnnecessaryComposedModifier"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ModifierMissing": {
+      "contract": "L15",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeModifierMissing",
+        "ModifierParameter"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ModifierNaming": {
+      "contract": "L15",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ModifierNotUsedAtRoot": {
+      "contract": "L15",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ModifierReused": {
+      "contract": "L15",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeModifierReused"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ModifierShouldBeForwardedToEveryBranch": {
+      "contract": "L15",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeModifierReused"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ModifierWithoutDefault": {
+      "contract": "L15",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeModifierWithoutDefault",
+        "ModifierParameter"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ComposableAnnotationNaming": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ComposableNaming": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeNamingUppercase",
+        "ComposeNamingLowercase",
+        "ComposableNaming"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ComposableNestingDepth": {
+      "contract": "L16",
+      "enabled": false,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ComposableParamOrder": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeParameterOrder"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ConditionHoist": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ContentEmitterReturningValues": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeContentEmitterReturningValues"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ContentSlotReused": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "SlotReused"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ContentTrailingLambda": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.DefaultsVisibility": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.LambdaParameterEventTrailing": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.MultipleEmitters": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeMultipleContentEmitters"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ParameterNaming": {
+      "contract": "L16",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.MutableParams": {
+      "contract": "L17",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeMutableParameters"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.MutableStateAutoboxing": {
+      "contract": "L17",
+      "enabled": true,
+      "severity": "Information",
+      "lint_overlap_candidates": [
+        "AutoboxingStateCreation",
+        "AutoboxingStateValueProperty"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.MutableStateParam": {
+      "contract": "L17",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeMutableParameters"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.RememberContentMissing": {
+      "contract": "L17",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.RememberMissing": {
+      "contract": "L17",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "UnrememberedMutableState"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.StaleRememberUpdatedStateInRemember": {
+      "contract": "L17",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.StateParam": {
+      "contract": "L17",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.VarsWithoutStateBacking": {
+      "contract": "L17",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.LambdaParameterInRestartableEffect": {
+      "contract": "L18",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.UnnecessaryLaunchedEffect": {
+      "contract": "L18",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.CompositionLocalAllowlist": {
+      "contract": "L19",
+      "enabled": false,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeCompositionLocalUsage"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.CompositionLocalNaming": {
+      "contract": "L19",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "CompositionLocalNaming"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.Material2": {
+      "contract": "L19",
+      "enabled": false,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeM2Api",
+        "UsingMaterialAndMaterial3Libraries"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.UnstableCollections": {
+      "contract": "L19",
+      "enabled": false,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeUnstableCollections"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ViewModelForwarding": {
+      "contract": "L19",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeViewModelForwarding"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.ViewModelInjection": {
+      "contract": "L19",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposeViewModelInjection"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.PreviewAnnotationNaming": {
+      "contract": "L20",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposePreviewNaming"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.PreviewNaming": {
+      "contract": "L20",
+      "enabled": false,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.PreviewPublic": {
+      "contract": "L20",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [
+        "ComposePreviewPublic"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.InvalidReadOnlyComposable": {
+      "contract": "L21",
+      "enabled": true,
+      "severity": "Warning",
+      "lint_overlap_candidates": [],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.MissingNonRestartableComposable": {
+      "contract": "L21",
+      "enabled": true,
+      "severity": "Information",
+      "lint_overlap_candidates": [
+        "ComposeNonRestartableComposable"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.MissingReadOnlyComposable": {
+      "contract": "L21",
+      "enabled": true,
+      "severity": "Information",
+      "lint_overlap_candidates": [
+        "ComposeReadOnlyComposable"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    },
+    "detekt.Compose.UnnecessaryComposable": {
+      "contract": "L21",
+      "enabled": true,
+      "severity": "Information",
+      "lint_overlap_candidates": [
+        "ComposeRedundantComposable"
+      ],
+      "deduplication": "Same source owner, operation and proven consequence only; otherwise retain distinct groups."
+    }
+  }
+}

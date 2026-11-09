@@ -1,0 +1,641 @@
+{
+  "schema_version": 12,
+  "protocol_id": "synthetic-static-example",
+  "frozen_at": "Synthetic format demonstration, no real preregistration",
+  "assessment_mode": "retrospective",
+  "scope": "Synthetic examples only; no product scan or acceptance claim.",
+  "overlap_review": "Lint missing-default counterpart is visible but non-additive; two distinct detekt findings have separate owners.",
+  "catalog_sha256": "1337aabfda166600feedd8631371d859bcbd07c047e7009cfdcd2f096e2b7bb5",
+  "lint_policy_sha256": "566b31e39cfe159dca4328257fcbee732e5f3c237e004f77137d7dbf559e918e",
+  "analyzer_profiles": {
+    "android-lint": {
+      "base": "synthetic-base",
+      "module": ":ui",
+      "variant": "debug",
+      "toolchain": "Synthetic schema example of pinned tools, not execution evidence",
+      "configuration_sha256": "a9d3e3dbb5e9ba3deaa98dfe105b3930b947e7ba3d2695b0f7492750af2b591d",
+      "scope": "added-and-modified-lines",
+      "selected_rules": [
+        "ComposeModifierWithoutDefault"
+      ],
+      "rule_selection": "Synthetic selected Slack rule",
+      "exclusions": "No synthetic suppressions",
+      "collection_method": "Synthetic raw report format",
+      "analysis_mode": "android-lint",
+      "source_scope": "Synthetic Tile.kt",
+      "coverage_note": "Synthetic field demonstration; no actual tool execution",
+      "quality_owners": {}
+    },
+    "detekt": {
+      "base": "synthetic-base",
+      "module": ":ui",
+      "variant": "debug",
+      "toolchain": "Synthetic schema example of pinned tools, not execution evidence",
+      "configuration_sha256": "a502dfb4d3ce1a2943a9bc7f42885a773d6e30ce5cc425cd45dbf36cfbf129de",
+      "scope": "added-and-modified-lines",
+      "selected_rules": [
+        "detekt.Compose.ComposableAnnotationNaming",
+        "detekt.Compose.ComposableNaming",
+        "detekt.Compose.ComposableParamOrder",
+        "detekt.Compose.CompositionLocalNaming",
+        "detekt.Compose.ConditionHoist",
+        "detekt.Compose.ContentEmitterReturningValues",
+        "detekt.Compose.ContentSlotReused",
+        "detekt.Compose.ContentTrailingLambda",
+        "detekt.Compose.DefaultsVisibility",
+        "detekt.Compose.InvalidReadOnlyComposable",
+        "detekt.Compose.LambdaParameterEventTrailing",
+        "detekt.Compose.LambdaParameterInRestartableEffect",
+        "detekt.Compose.MissingNonRestartableComposable",
+        "detekt.Compose.MissingReadOnlyComposable",
+        "detekt.Compose.ModifierClickableOrder",
+        "detekt.Compose.ModifierComposed",
+        "detekt.Compose.ModifierMissing",
+        "detekt.Compose.ModifierNaming",
+        "detekt.Compose.ModifierNotUsedAtRoot",
+        "detekt.Compose.ModifierReused",
+        "detekt.Compose.ModifierShouldBeForwardedToEveryBranch",
+        "detekt.Compose.ModifierWithoutDefault",
+        "detekt.Compose.MultipleEmitters",
+        "detekt.Compose.MutableParams",
+        "detekt.Compose.MutableStateAutoboxing",
+        "detekt.Compose.MutableStateParam",
+        "detekt.Compose.ParameterNaming",
+        "detekt.Compose.PreviewAnnotationNaming",
+        "detekt.Compose.PreviewPublic",
+        "detekt.Compose.RememberContentMissing",
+        "detekt.Compose.RememberMissing",
+        "detekt.Compose.StaleRememberUpdatedStateInRemember",
+        "detekt.Compose.StateParam",
+        "detekt.Compose.UnnecessaryComposable",
+        "detekt.Compose.UnnecessaryLaunchedEffect",
+        "detekt.Compose.VarsWithoutStateBacking",
+        "detekt.Compose.ViewModelForwarding",
+        "detekt.Compose.ViewModelInjection",
+        "detekt.Composer.BlockingCallInComposition",
+        "detekt.Composer.PositionalBooleanArguments",
+        "detekt.Composer.ConstantLazyItemKey",
+        "detekt.Composer.CoroutineLaunchInComposition",
+        "detekt.Composer.DroppedEventCallback",
+        "detekt.Composer.DroppedUiInput",
+        "detekt.Composer.InvalidLayoutBounds",
+        "detekt.Composer.NoOpActionDefault",
+        "detekt.Composer.NondeterministicDefault",
+        "detekt.Composer.NondeterministicPreview",
+        "detekt.Composer.PreviewDuplicateBody",
+        "detekt.Composer.PreviewEnvironmentDependency",
+        "detekt.Composer.RedundantSizeModifier",
+        "detekt.Composer.StateWriteInComposition",
+        "detekt.Composer.UnkeyedRememberCapture",
+        "detekt.Composer.UntypedEventCallback",
+        "detekt.Composer.UnusedEventCallback",
+        "detekt.Composer.UnusedUiParameter",
+        "detekt.Composer.WhitespaceLayoutSpacer",
+        "detekt.complexity.CyclomaticComplexMethod",
+        "detekt.complexity.LongMethod",
+        "detekt.complexity.LongParameterList",
+        "detekt.complexity.NestedBlockDepth",
+        "detekt.complexity.TooManyFunctions",
+        "detekt.empty-blocks.EmptyCatchBlock",
+        "detekt.naming.FunctionNaming",
+        "detekt.style.UnusedPrivateFunction"
+      ],
+      "rule_selection": "Synthetic complete enabled catalog declaration",
+      "exclusions": "No synthetic suppressions",
+      "collection_method": "Synthetic raw report format",
+      "analysis_mode": "full",
+      "source_scope": "Synthetic Tile.kt",
+      "coverage_note": "Synthetic complete v11 profile, not real execution evidence",
+      "quality_owners": {},
+      "rule_artifacts_sha256": {
+        "detekt-0.6.8.jar": "9119e4517f673bac3f511a489bbb073479dbd5bddd044b331547a9e3b07339fb",
+        "composer-quality-rules.jar": "de96eda7b6058de0ff229518341c63ec36c65e4e42257b25efcacd1b52d3c9a8",
+        "common-detekt-0.6.8.jar": "888287c94182ce4e87553b386ed2bfd785a385865f05a6fcab31e517256e92f3"
+      }
+    }
+  },
+  "coverage_catalog_sha256": "5705c95be5828b1574e8e82c1f9285e2e30464117e06e658922b24d682d93f4a",
+  "requirement_scope": {
+    "static:detekt.Compose.ModifierClickableOrder": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ModifierComposed": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ModifierMissing": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ModifierNaming": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ModifierNotUsedAtRoot": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ModifierReused": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ModifierShouldBeForwardedToEveryBranch": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ModifierWithoutDefault": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ComposableAnnotationNaming": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ComposableNaming": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ComposableParamOrder": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ConditionHoist": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ContentEmitterReturningValues": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ContentSlotReused": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ContentTrailingLambda": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.DefaultsVisibility": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.LambdaParameterEventTrailing": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.MultipleEmitters": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ParameterNaming": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.MutableParams": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.MutableStateAutoboxing": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.MutableStateParam": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.RememberContentMissing": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.RememberMissing": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.StaleRememberUpdatedStateInRemember": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.StateParam": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.VarsWithoutStateBacking": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.LambdaParameterInRestartableEffect": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.UnnecessaryLaunchedEffect": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.CompositionLocalNaming": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ViewModelForwarding": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.ViewModelInjection": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.PreviewAnnotationNaming": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.PreviewPublic": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.InvalidReadOnlyComposable": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.MissingNonRestartableComposable": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.MissingReadOnlyComposable": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Compose.UnnecessaryComposable": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.complexity.CyclomaticComplexMethod": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.complexity.LongMethod": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.complexity.NestedBlockDepth": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.complexity.TooManyFunctions": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.complexity.LongParameterList": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.naming.FunctionNaming": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.empty-blocks.EmptyCatchBlock": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.UntypedEventCallback": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.NondeterministicDefault": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.NoOpActionDefault": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.PositionalBooleanArguments": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.RedundantSizeModifier": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.BlockingCallInComposition": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.NondeterministicPreview": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.PreviewEnvironmentDependency": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.style.UnusedPrivateFunction": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.UnusedEventCallback": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.UnusedUiParameter": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.StateWriteInComposition": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.CoroutineLaunchInComposition": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.InvalidLayoutBounds": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.ConstantLazyItemKey": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.UnkeyedRememberCapture": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.DroppedEventCallback": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.DroppedUiInput": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.WhitespaceLayoutSpacer": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    },
+    "static:detekt.Composer.PreviewDuplicateBody": {
+      "status": "applicable",
+      "reason": "Exact frozen static predicate; zero diagnostics is not broad semantic acceptance.",
+      "evidence": [
+        "synthetic profile example only"
+      ],
+      "authority": "v11 catalog"
+    }
+  },
+  "acceptance_boundaries_sha256": "c5d4e60cb99421d70c358e842ad906a0559de1fd2605ba5f6bcb95a6510f2320"
+}

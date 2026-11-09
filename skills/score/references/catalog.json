@@ -1,0 +1,726 @@
+{
+  "version": 12,
+  "meaning": "Two independent static analyzer scores. Categories are labels only; no category grades or combined total.",
+  "detekt_version": "2.0.0-alpha.6",
+  "compose_rules_version": "0.6.8",
+  "composer_rules_version": "1.4.1",
+  "categories": [
+    {
+      "id": "D01",
+      "name": "Event callback contracts",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D02",
+      "name": "Caller and default contracts",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D03",
+      "name": "Composition assembly contracts",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D04",
+      "name": "Layout and Modifier contracts",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D06",
+      "name": "Component dependency contracts",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D08",
+      "name": "Parameter contracts",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D09",
+      "name": "State and effect contracts",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D10",
+      "name": "Code structure conventions",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D11",
+      "name": "Preview declaration and fixture contracts",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D12",
+      "name": "Performance risk patterns",
+      "meaning": "Unscored diagnostic classification label."
+    },
+    {
+      "id": "D14",
+      "name": "General Compose conventions",
+      "meaning": "Unscored diagnostic classification label."
+    }
+  ],
+  "rules": {
+    "detekt.Compose.ModifierClickableOrder": {
+      "category": "D04",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Modifier order can change hit/visual bounds.",
+      "ownership_priority": 2
+    },
+    "detekt.Compose.ModifierComposed": {
+      "category": "D12",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Legacy composed modifier adds composition overhead; actual cost unmeasured.",
+      "ownership_priority": 3
+    },
+    "detekt.Compose.ModifierMissing": {
+      "category": "D14",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Caller cannot provide a standard layout/behavior modifier.",
+      "ownership_priority": 10
+    },
+    "detekt.Compose.ModifierNaming": {
+      "category": "D14",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Modifier parameter naming convention.",
+      "ownership_priority": 10
+    },
+    "detekt.Compose.ModifierNotUsedAtRoot": {
+      "category": "D04",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Caller allocation can be applied to the wrong layout owner.",
+      "ownership_priority": 2
+    },
+    "detekt.Compose.ModifierReused": {
+      "category": "D04",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Caller modifier contract can affect multiple children.",
+      "ownership_priority": 2
+    },
+    "detekt.Compose.ModifierShouldBeForwardedToEveryBranch": {
+      "category": "D04",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "A branch drops caller layout behavior.",
+      "ownership_priority": 2
+    },
+    "detekt.Compose.ModifierWithoutDefault": {
+      "category": "D14",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Caller must provide a normally optional layout argument.",
+      "ownership_priority": 10
+    },
+    "detekt.Compose.ComposableAnnotationNaming": {
+      "category": "D14",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Composable annotation naming convention.",
+      "ownership_priority": 10
+    },
+    "detekt.Compose.ComposableNaming": {
+      "category": "D14",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Composable naming convention.",
+      "ownership_priority": 10
+    },
+    "detekt.Compose.ComposableNestingDepth": {
+      "category": "D10",
+      "deduction": 0,
+      "enabled": false,
+      "provider": "maintained-compose",
+      "severity": "disabled",
+      "rationale": "Project policy is not selected in this fixed profile."
+    },
+    "detekt.Compose.ComposableParamOrder": {
+      "category": "D14",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Composable parameter ordering convention.",
+      "ownership_priority": 10
+    },
+    "detekt.Compose.ConditionHoist": {
+      "category": "D03",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Branch assembly duplicates decisions; correctness is not inferred.",
+      "ownership_priority": 6
+    },
+    "detekt.Compose.ContentEmitterReturningValues": {
+      "category": "D03",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Mixes UI emission with returned values and ambiguous ownership.",
+      "ownership_priority": 6
+    },
+    "detekt.Compose.ContentSlotReused": {
+      "category": "D03",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Slot reuse changes composition identity and retention expectations.",
+      "ownership_priority": 6
+    },
+    "detekt.Compose.ContentTrailingLambda": {
+      "category": "D08",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Slot placement is a call-site convention.",
+      "ownership_priority": 4
+    },
+    "detekt.Compose.DefaultsVisibility": {
+      "category": "D02",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Default visibility differs from the API visibility contract.",
+      "ownership_priority": 7
+    },
+    "detekt.Compose.LambdaParameterEventTrailing": {
+      "category": "D08",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Event/slot call-site ambiguity is a convention risk.",
+      "ownership_priority": 4
+    },
+    "detekt.Compose.MultipleEmitters": {
+      "category": "D03",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Multiple root emitters complicate layout ownership; not inherently a crash.",
+      "ownership_priority": 6
+    },
+    "detekt.Compose.ParameterNaming": {
+      "category": "D08",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Parameter naming convention, not semantic proof.",
+      "ownership_priority": 4
+    },
+    "detekt.Compose.MutableParams": {
+      "category": "D08",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Unobservable mutable input can bypass expected UI invalidation.",
+      "ownership_priority": 4
+    },
+    "detekt.Compose.MutableStateAutoboxing": {
+      "category": "D12",
+      "deduction": 0,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "advisory",
+      "rationale": "Optional optimization hint without demonstrated behavioral failure.",
+      "ownership_priority": 3
+    },
+    "detekt.Compose.MutableStateParam": {
+      "category": "D08",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Public writable state exposes write authority beyond the caller.",
+      "ownership_priority": 4
+    },
+    "detekt.Compose.RememberContentMissing": {
+      "category": "D09",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Movable content identity is recreated during recomposition.",
+      "ownership_priority": 0
+    },
+    "detekt.Compose.RememberMissing": {
+      "category": "D09",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Composition-created state loses stable identity.",
+      "ownership_priority": 0
+    },
+    "detekt.Compose.StaleRememberUpdatedStateInRemember": {
+      "category": "D09",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Captured value can stop reflecting current input.",
+      "ownership_priority": 0
+    },
+    "detekt.Compose.StateParam": {
+      "category": "D09",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "State wrapper exposes observation policy in an API boundary.",
+      "ownership_priority": 0
+    },
+    "detekt.Compose.VarsWithoutStateBacking": {
+      "category": "D09",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Mutable UI state lacks observable backing.",
+      "ownership_priority": 0
+    },
+    "detekt.Compose.LambdaParameterInRestartableEffect": {
+      "category": "D09",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Effect capture can retain an outdated callback.",
+      "ownership_priority": 0
+    },
+    "detekt.Compose.UnnecessaryLaunchedEffect": {
+      "category": "D12",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Unnecessary effect scheduling/lifetime complexity.",
+      "ownership_priority": 3
+    },
+    "detekt.Compose.CompositionLocalAllowlist": {
+      "category": "D06",
+      "deduction": 0,
+      "enabled": false,
+      "provider": "maintained-compose",
+      "severity": "disabled",
+      "rationale": "Project policy is not selected in this fixed profile."
+    },
+    "detekt.Compose.CompositionLocalNaming": {
+      "category": "D14",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "CompositionLocal naming convention.",
+      "ownership_priority": 10
+    },
+    "detekt.Compose.Material2": {
+      "category": "D14",
+      "deduction": 0,
+      "enabled": false,
+      "provider": "maintained-compose",
+      "severity": "disabled",
+      "rationale": "Project policy is not selected in this fixed profile."
+    },
+    "detekt.Compose.UnstableCollections": {
+      "category": "D12",
+      "deduction": 0,
+      "enabled": false,
+      "provider": "maintained-compose",
+      "severity": "disabled",
+      "rationale": "Project policy is not selected in this fixed profile."
+    },
+    "detekt.Compose.ViewModelForwarding": {
+      "category": "D06",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Child depends on a broader owner than its state/event contract.",
+      "ownership_priority": 5
+    },
+    "detekt.Compose.ViewModelInjection": {
+      "category": "D06",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "moderate",
+      "rationale": "Dependency acquisition is hidden in a UI contract.",
+      "ownership_priority": 5
+    },
+    "detekt.Compose.PreviewAnnotationNaming": {
+      "category": "D11",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Multipreview naming convention.",
+      "ownership_priority": 9
+    },
+    "detekt.Compose.PreviewNaming": {
+      "category": "D11",
+      "deduction": 0,
+      "enabled": false,
+      "provider": "maintained-compose",
+      "severity": "disabled",
+      "rationale": "Project policy is not selected in this fixed profile."
+    },
+    "detekt.Compose.PreviewPublic": {
+      "category": "D11",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "minor",
+      "rationale": "Fixture visibility convention.",
+      "ownership_priority": 9
+    },
+    "detekt.Compose.InvalidReadOnlyComposable": {
+      "category": "D14",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "major",
+      "rationale": "Read-only annotation claims a stronger contract than the implementation.",
+      "ownership_priority": 10
+    },
+    "detekt.Compose.MissingNonRestartableComposable": {
+      "category": "D12",
+      "deduction": 0,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "advisory",
+      "rationale": "Optional optimization hint without demonstrated behavioral failure.",
+      "ownership_priority": 3
+    },
+    "detekt.Compose.MissingReadOnlyComposable": {
+      "category": "D12",
+      "deduction": 0,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "advisory",
+      "rationale": "Optional optimization hint without demonstrated behavioral failure.",
+      "ownership_priority": 3
+    },
+    "detekt.Compose.UnnecessaryComposable": {
+      "category": "D14",
+      "deduction": 0,
+      "enabled": true,
+      "provider": "maintained-compose",
+      "severity": "advisory",
+      "rationale": "Optional optimization hint without demonstrated behavioral failure.",
+      "ownership_priority": 10
+    },
+    "detekt.complexity.CyclomaticComplexMethod": {
+      "category": "D10",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "detekt",
+      "severity": "moderate",
+      "rationale": "Branch complexity exceeds the frozen maintainability threshold.",
+      "ownership_priority": 8
+    },
+    "detekt.complexity.LongMethod": {
+      "category": "D10",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "detekt",
+      "severity": "moderate",
+      "rationale": "Method length exceeds the frozen structure threshold.",
+      "ownership_priority": 8
+    },
+    "detekt.complexity.NestedBlockDepth": {
+      "category": "D10",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "detekt",
+      "severity": "moderate",
+      "rationale": "Nesting exceeds the frozen readability threshold.",
+      "ownership_priority": 8
+    },
+    "detekt.complexity.TooManyFunctions": {
+      "category": "D10",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "detekt",
+      "severity": "moderate",
+      "rationale": "Function count in the reported file/class/interface/object/enum exceeds its frozen maintainability threshold.",
+      "ownership_priority": 8
+    },
+    "detekt.complexity.LongParameterList": {
+      "category": "D10",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "detekt",
+      "severity": "moderate",
+      "rationale": "Required argument count exceeds the frozen API threshold.",
+      "ownership_priority": 8
+    },
+    "detekt.naming.FunctionNaming": {
+      "category": "D10",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "detekt",
+      "severity": "minor",
+      "rationale": "Function naming convention.",
+      "ownership_priority": 8
+    },
+    "detekt.empty-blocks.EmptyCatchBlock": {
+      "category": "D10",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "detekt",
+      "severity": "major",
+      "rationale": "Caught failures disappear without handling or propagation.",
+      "ownership_priority": 8
+    },
+    "detekt.Composer.UntypedEventCallback": {
+      "category": "D01",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "moderate",
+      "rationale": "Any payload removes compile-time event shape constraints.",
+      "ownership_priority": 1
+    },
+    "detekt.Composer.NondeterministicDefault": {
+      "category": "D02",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "rationale": "Omitted argument changes on reevaluation instead of explicit input lifetime.",
+      "ownership_priority": 7
+    },
+    "detekt.Composer.NoOpActionDefault": {
+      "category": "D08",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "rationale": "Required-looking action can silently do nothing.",
+      "ownership_priority": 4
+    },
+    "detekt.Composer.PositionalBooleanArguments": {
+      "category": "D08",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "moderate",
+      "rationale": "Multiple supplied Boolean arguments without names obscure call-site roles; one defect per call.",
+      "ownership_priority": 4,
+      "counting_unit": "resolved-source-callable-contract; unresolved identity remains per diagnostic"
+    },
+    "detekt.Composer.RedundantSizeModifier": {
+      "category": "D04",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "minor",
+      "rationale": "Identical consecutive constant allocation is redundant.",
+      "ownership_priority": 2
+    },
+    "detekt.Composer.BlockingCallInComposition": {
+      "category": "D12",
+      "deduction": 25,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "high",
+      "rationale": "Synchronous blocking or IO is performed during composition.",
+      "ownership_priority": 3
+    },
+    "detekt.Composer.NondeterministicPreview": {
+      "category": "D11",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "moderate",
+      "rationale": "Fixture cannot be reproduced from fixed inputs.",
+      "ownership_priority": 9
+    },
+    "detekt.Composer.PreviewEnvironmentDependency": {
+      "category": "D11",
+      "deduction": 10,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "rationale": "Fixture depends on external runtime environment.",
+      "ownership_priority": 9
+    },
+    "detekt.style.UnusedPrivateFunction": {
+      "category": "D10",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "detekt",
+      "severity": "minor",
+      "rationale": "Dead private implementation increases maintenance noise.",
+      "ownership_priority": 8
+    },
+    "detekt.Composer.UnusedEventCallback": {
+      "category": "D01",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "deduction": 10,
+      "rationale": "Declared event is never consumed by the implementation.",
+      "ownership_priority": 1
+    },
+    "detekt.Composer.UnusedUiParameter": {
+      "category": "D08",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "deduction": 10,
+      "rationale": "Declared UI data is never consumed by the implementation.",
+      "ownership_priority": 4
+    },
+    "detekt.Composer.StateWriteInComposition": {
+      "category": "D09",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "high",
+      "deduction": 25,
+      "rationale": "Composition directly writes snapshot state, risking feedback/repeated mutation.",
+      "ownership_priority": 0
+    },
+    "detekt.Composer.CoroutineLaunchInComposition": {
+      "category": "D09",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "high",
+      "deduction": 25,
+      "rationale": "Composition directly starts asynchronous work without effect/event lifetime.",
+      "ownership_priority": 0
+    },
+    "detekt.Composer.InvalidLayoutBounds": {
+      "category": "D04",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "deduction": 10,
+      "rationale": "Constant padding or min/max violates the declared layout bounds.",
+      "ownership_priority": 2
+    },
+    "detekt.Composer.ConstantLazyItemKey": {
+      "category": "D12",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "deduction": 10,
+      "rationale": "A constant key duplicates identity for multi-item workloads.",
+      "ownership_priority": 3
+    },
+    "detekt.Composer.UnkeyedRememberCapture": {
+      "category": "D09",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "deduction": 10,
+      "rationale": "Direct parameter capture retains its first value without an invalidation key.",
+      "ownership_priority": 0
+    },
+    "detekt.Composer.DroppedEventCallback": {
+      "category": "D01",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "deduction": 10,
+      "ownership_priority": 1,
+      "rationale": "Resolved forwarding reaches a concrete source helper that never consumes the input, within the configured trace depth."
+    },
+    "detekt.Composer.DroppedUiInput": {
+      "category": "D08",
+      "enabled": true,
+      "provider": "composer",
+      "severity": "major",
+      "deduction": 10,
+      "ownership_priority": 4,
+      "rationale": "Resolved forwarding reaches a concrete source helper that never consumes the input, within the configured trace depth."
+    },
+    "detekt.Composer.WhitespaceLayoutSpacer": {
+      "category": "D04",
+      "deduction": 2,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "minor",
+      "rationale": "Whitespace-only Text couples spacing to glyph metrics rather than a layout allocation.",
+      "ownership_priority": 2
+    },
+    "detekt.Composer.PreviewDuplicateBody": {
+      "category": "D11",
+      "deduction": 5,
+      "enabled": true,
+      "provider": "composer",
+      "severity": "moderate",
+      "rationale": "Existing Preview duplicates a nontrivial production body instead of delegating.",
+      "ownership_priority": 9
+    }
+  },
+  "severity_policy": {
+    "high": {
+      "deduction": 25,
+      "gate": "failed",
+      "meaning": "Direct mutation/lifetime/blocking risk in composition; not a measured crash claim."
+    },
+    "major": {
+      "deduction": 10,
+      "gate": "changes-required",
+      "meaning": "Lost contract, stale state, layout bounds or identity risk."
+    },
+    "moderate": {
+      "deduction": 5,
+      "gate": "review",
+      "meaning": "Dependency, API or maintainability risk with narrower immediate consequences."
+    },
+    "minor": {
+      "deduction": 2,
+      "gate": "review",
+      "meaning": "Naming, ordering, visibility or local redundancy convention."
+    },
+    "advisory": {
+      "deduction": 0,
+      "gate": "advisory",
+      "meaning": "Optimization hint; no demonstrated behavioral defect."
+    }
+  },
+  "default_config_sha256": "44c5768d3660c22a9420ada16f20cebf20646badeff969b7d8581314818a73a7",
+  "rule_scope_revision": "composer-static-v6",
+  "score_outputs": [
+    "android-lint",
+    "detekt"
+  ],
+  "aggregation": "none"
+}
