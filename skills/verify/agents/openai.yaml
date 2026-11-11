@@ -1,4 +1,0 @@
-interface:
-  display_name: "Compose Verify"
-  short_description: "Run Lint and detekt with execution evidence"
-  default_prompt: "Use $verify to run Lint and detekt for this Compose change, validate scan coverage and report diagnostics without changing the evaluated source."

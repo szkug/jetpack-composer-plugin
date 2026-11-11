@@ -1,0 +1,4 @@
+interface:
+  display_name: "agent-compose-coder"
+  short_description: "Design, implement, verify and review Compose UI"
+  default_prompt: "Use $agent-compose-coder to implement this Compose UI, review the changed source and verify it with native Lint and detekt."

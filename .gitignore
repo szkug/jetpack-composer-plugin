@@ -1,4 +1,4 @@
-# Local experiments belong outside the public plugin.
+# Local experiments belong outside the public skill.
 /evals/
 
 # Generated local artifacts.

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Compose Impl"
-  short_description: "Implement Compose UI and review source contracts"
-  default_prompt: "Use $impl to implement this Compose UI using the shared specification and review the changed source."

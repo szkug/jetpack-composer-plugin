@@ -1,4 +1,0 @@
-interface:
-  display_name: "Compose Score"
-  short_description: "Score executable Compose source contracts"
-  default_prompt: "Use $score to calculate independent Lint and detekt scores from verified evidence, with severity-based deductions and no category grades or combined total."
