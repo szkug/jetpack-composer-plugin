@@ -7,7 +7,7 @@ from pathlib import Path
 
 APP_ID = 'dev.composer.compose-quality'
 COMMAND = 'compose-quality'
-PROTOCOL = 12
+PROTOCOL = 14
 
 
 def sha(path):
@@ -22,12 +22,12 @@ def source_files(root):
     names = ['install-cli.sh', 'install-analyzers.sh', 'CLI.md', 'SKILL.md', 'agents/openai.yaml', 'scripts/compose_quality.py',
              'scripts/verify/rules/detekt.yml']
     names += ['scripts/verify/' + name for name in (
-        'incremental_lint.py', 'incremental_detekt.py', 'standalone_scan.py',
+        'lint_inventory.py', 'incremental_lint.py', 'incremental_detekt.py', 'standalone_scan.py',
         'ensure_analyzers.py', 'native_launch.py', 'build_rule_jar.py', 'cli_bundle.py', 'install_cli.py',
         'build_cli.py', 'ensure_cli.sh', 'render_preview.py')]
     # Include the single skill entry point and its references alongside the CLI runtime.
     names += ['scripts/score/' + name for name in (
-        'calculate.py', 'compare.py', 'engine.py', 'score_common.py', 'diagnostics.py')]
+        'chart.py', 'rule_policy.py', 'lint_registry.py', 'calculate.py', 'compare.py', 'engine.py', 'score_common.py', 'diagnostics.py')]
     names += ['references/score/' + name for name in (
         'catalog.json', 'lint-policy.json')]
     names += ['references/verify/' + name for name in ('coverage.json', 'acceptance-boundaries.json')]

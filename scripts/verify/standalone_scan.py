@@ -12,6 +12,8 @@ import tempfile
 import xml.etree.ElementTree as ET
 from ensure_analyzers import ensure, lock_data, rule_path, ROOT
 from incremental_lint import git, changed_lines, snapshot, write_json
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'score'))
+from rule_policy import POLICY as RULE_POLICY, policy_digest
 
 
 def sha(path):
@@ -100,6 +102,8 @@ def lint_descriptor(context, out, rules):
 
 def prepare(args, analyzer):
     context = load_context(args.context)
+    if analyzer == 'lint' and context.get('lint_config'):
+        raise ValueError('Full-registry Lint assessment uses a generated override; remove lint_config from the context')
     project = Path(context['project'])
     root = Path(git(project, 'rev-parse', '--show-toplevel').decode().strip())
     base = git(root, 'rev-parse', '--verify', args.base + '^{commit}').decode().strip()
@@ -127,12 +131,17 @@ def prepare(args, analyzer):
         if context.get('api_version'):command += ['--api-version', context['api_version']]
         if context.get('jdk_home'):command += ['--jdk-home', str(Path(context['jdk_home']).resolve())]
     else:
+        from lint_inventory import collect
+        lint_inventory = collect(native, rules, out)
         descriptor = lint_descriptor(context, out, rules)
         (out / 'empty-baseline.xml').write_text('<issues format="6" />\n')
         command = common + ['--project', str(descriptor), '--lint-rule-jars', os.pathsep.join(map(str, rules)),
             '--xml', str(out / 'lint.xml'), '--quiet', '--baseline', str(out / 'empty-baseline.xml'),
             '--java-language-level', context['jvm_target'], '--kotlin-language-level', context['language_version']]
-        if context.get('lint_config'):command += ['--config', context['lint_config']]
+        # A scoring run enables every registered ID, including default-disabled rules.
+        # The generated override prevents local lint.xml from overriding built-in activation or severity.
+        command += ['--check', ','.join(lint_inventory['rules']),
+                    '--override-config', str(out / 'all-rules-lint.xml')]
     frozen_paths = set(context['source_roots'] + context['generated_sources'] + context['classpath'] +
                        context['lint_rule_jars'] + [context['context_file'], str(config), *map(str, rules)])
     # Also freeze inherited lint policy and Android resources/manifest used by this invocation.
@@ -146,8 +155,9 @@ def prepare(args, analyzer):
         frozen_paths.add(str(runtime));frozen_paths.update(str(runtime.parent / name) for name in record['files'])
     frozen_paths.add(native['executable'])
     frozen_paths.add(str(ROOT / 'scripts/verify/runtime/analyzers.lock.json'))
+    frozen_paths.add(str(RULE_POLICY))
     def item(path):return {'path': str(path), 'name': Path(path).name, 'sha256': fingerprint(path)}
-    receipt = {'integration': 'standalone-cli', 'analyzer': analyzer, 'mode': 'full',
+    receipt = {'rulePolicySha256': policy_digest(), 'integration': 'standalone-cli', 'analyzer': analyzer, 'mode': 'full',
         'version': lock['tools'][analyzer]['version'], 'cliVersion': native['version'],
         'module': context['module'], 'variant': context['variant'], 'projectDir': context['module_dir'],
         'originalProjectEvaluated': False, 'contextProvenance': context['provenance'],
@@ -160,12 +170,15 @@ def prepare(args, analyzer):
         'composeRulesVersion': '0.6.8', 'composerRulesVersion': '1.4.1', 'slackVersion': '1.6.1',
         'analyzerLockSha256': lock_sha, 'native': native, 'command': command,
         'coverageBoundary': 'Full analysis of declared compilation context. Context provenance/completeness must be reviewed; no Gradle evaluation or build is implied.'}
+    if analyzer == 'lint':
+        receipt['ruleInventory'] = lint_inventory
+        receipt['configFiles'] = [item(out / 'all-rules-lint.xml')]
     write_json(out / 'receipt.json', receipt)
     write_json(out / 'command.json', {'argv': command, 'cwd': str(project)})
     manifest = {'analyzer': analyzer, 'project': str(project), 'root': str(root), 'base': base,
         'head': git(root, 'rev-parse', 'HEAD').decode().strip(), 'source_digest': before,
         'changes': changes, 'module': context['module'], 'variant': context['variant'],
-        'fail_level': args.fail_level, 'profile': 'composer-static-v6', 'analysis_mode': 'full',
+        'fail_level': args.fail_level, 'profile': 'composer-static-v7', 'analysis_mode': 'full',
         'coverage_note': receipt['coverageBoundary'], 'cli_argv': command,
         'analysis_environment': {k: os.environ.get(k) for k in ['JAVA_HOME','JAVA_TOOL_OPTIONS','_JAVA_OPTIONS','JDK_JAVA_OPTIONS']},
         'original_inputs': {p: fingerprint(p) for p in sorted(frozen_paths)},
@@ -191,6 +204,10 @@ def validate_run(out, exit_code):
     receipt = json.loads((out / 'receipt.json').read_text())
     if receipt.get('integration') != 'standalone-cli' or receipt.get('mode') != 'full' or not receipt.get('contextVerified'):
         errors.append('Invalid standalone analysis receipt')
+    if receipt.get('rulePolicySha256') != policy_digest():
+        errors.append('Shared verification/scoring rule policy changed')
+    if manifest.get('fail_level') != 'warning':
+        errors.append('Built-in policy requires warnings and errors to block delivery')
     report = out / ('detekt.sarif' if manifest['analyzer'] == 'detekt' else 'lint.xml')
     if not report.is_file():errors.append('Fresh native analyzer report missing')
     return manifest, receipt, errors
@@ -205,7 +222,7 @@ def main(analyzer):
         p.add_argument('--base', default='HEAD')
         p.add_argument('--merge-base', action='store_true')
         p.add_argument('--out')
-        p.add_argument('--fail-level', choices=['error', 'warning'], default='error')
+        p.add_argument('--fail-level', choices=['warning'], default='warning')
     p = commands.add_parser('check');p.add_argument('--run-dir', required=True);p.add_argument('--exit-code', required=True, type=int)
     args = parser.parse_args()
     from incremental_detekt import check as detekt_check

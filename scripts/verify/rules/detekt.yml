@@ -1,4 +1,4 @@
-# Composer Compose full-analysis profile v2 for detekt 2.0.0-alpha.6.
+# Composer shared verification/scoring policy v7 for detekt 2.0.0-alpha.6.
 # Requires verified compilation classpath and JVM target; no silent light-mode fallback.
 config:
   validation: true
@@ -504,7 +504,7 @@ Composer:
     severity: warning
   BlockingCallInComposition:
     active: true
-    severity: warning
+    severity: error
     maxCallDepth: 3
   NondeterministicPreview:
     maxCallDepth: 3
@@ -522,10 +522,10 @@ Composer:
     severity: warning
   StateWriteInComposition:
     active: true
-    severity: warning
+    severity: error
   CoroutineLaunchInComposition:
     active: true
-    severity: warning
+    severity: error
   InvalidLayoutBounds:
     active: true
     severity: warning

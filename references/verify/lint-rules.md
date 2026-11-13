@@ -4,7 +4,7 @@ The implementation requirements are defined in [spec](../spec.md). This document
 
 ## Rule applicability
 
-Use the actual project module/variant, resolved AndroidX registries, Slack 1.6.1 artifact, effective options/severity and accepted project policy. The presence of a rule name or a registered registry is not proof it executed. Missing, disabled or suppressed coverage is distinct from clean execution. Analyzer warnings can approximate a broader spec requirement without proving its full semantics.
+Use the actual project module/variant, resolved AndroidX registries, Slack 1.6.1 artifact, built-in options/severity (upstream defaults are metadata, not project opt-outs). The presence of a rule name or a registered registry is not proof it executed. Missing, disabled or suppressed coverage is distinct from clean execution. Analyzer warnings can approximate a broader spec requirement without proving its full semantics.
 
 When a check is narrower than spec, report the remaining limit. When it is broader or incompatible with a supported spec/project case, preserve its raw finding/gate and resolve applicability through the exception procedure below. Do not rewrite spec, invent a business requirement or change source merely to fit a detector.
 
@@ -52,7 +52,7 @@ All 24 published issue IDs are listed. Actual activation/severity comes from the
 | ComposeRedundantComposable | Qualifying unnecessary Composable annotation; warning-level policy, not measured runtime cost. | [spec: annotation promises and representations](../spec/performance.md#annotation-promises-and-representations) |
 | ComposeReadOnlyComposable | Informational missing-read-only suggestion for supported call/default patterns; no blanket annotation requirement. | [spec: annotation promises and representations](../spec/performance.md#annotation-promises-and-representations) |
 | ComposeNonRestartableComposable | Informational qualifying-wrapper suggestion; no blanket annotation requirement or measured speedup. | [spec: annotation promises and representations](../spec/performance.md#annotation-promises-and-representations) |
-| ComposeUnstableCollections | Opt-in collection stability policy; off by default and dependent on actual compiler/project policy. | [spec: annotation promises and representations](../spec/performance.md#annotation-promises-and-representations) |
+| ComposeUnstableCollections | Collection stability check. Upstream default-disabled; our built-in full-registry policy enables it for implementation and scoring. | [spec: annotation promises and representations](../spec/performance.md#annotation-promises-and-representations) |
 | ComposeUnstableReceiver | Opt-in unstable receiver policy; off by default. Observation correctness is a separate responsibility. | [spec: annotation promises and representations](../spec/performance.md#annotation-promises-and-representations) |
 | ComposeM2Api | Opt-in Material generation restriction; off by default and cannot authorize an unrequested migration. | [spec: fixed apis and supported variations](../spec/integration.md#fixed-apis-and-supported-variations) |
 

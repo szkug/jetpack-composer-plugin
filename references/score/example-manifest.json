@@ -1,39 +1,73 @@
 {
-  "schema_version": 12,
-  "protocol_id": "synthetic-static-example",
+  "schema_version": 14,
+  "protocol_id": "synthetic-static-deduction-example-v14",
   "frozen_at": "Synthetic format demonstration, no real preregistration",
   "assessment_mode": "retrospective",
   "scope": "Synthetic examples only; no product scan or acceptance claim.",
   "overlap_review": "Lint missing-default counterpart is visible but non-additive; two distinct detekt findings have separate owners.",
-  "catalog_sha256": "1337aabfda166600feedd8631371d859bcbd07c047e7009cfdcd2f096e2b7bb5",
-  "lint_policy_sha256": "566b31e39cfe159dca4328257fcbee732e5f3c237e004f77137d7dbf559e918e",
+  "catalog_sha256": "27d1a6e8d47424a082093a9e471d52a6c70a72f28ca2f220ace659d82641da71",
+  "lint_policy_sha256": "8ba50b3a22541bc2339c1e11030d0af80353312a4504108f6a4817a8115a599b",
   "analyzer_profiles": {
     "android-lint": {
       "base": "synthetic-base",
       "module": ":ui",
       "variant": "debug",
       "toolchain": "Synthetic schema example of pinned tools, not execution evidence",
-      "configuration_sha256": "a9d3e3dbb5e9ba3deaa98dfe105b3930b947e7ba3d2695b0f7492750af2b591d",
+      "configuration_sha256": "eb115285c57cef7cf34454f865e797009329e58d7f5514a9cf621fc1bdcd04ac",
       "scope": "added-and-modified-lines",
-      "selected_rules": [
-        "ComposeModifierWithoutDefault"
-      ],
-      "rule_selection": "Synthetic selected Slack rule",
+      "rule_selection": "All rules in the synthetic registry; not a real native runtime",
       "exclusions": "No synthetic suppressions",
       "collection_method": "Synthetic raw report format",
       "analysis_mode": "android-lint",
       "source_scope": "Synthetic Tile.kt",
       "coverage_note": "Synthetic field demonstration; no actual tool execution",
-      "quality_owners": {}
+      "quality_owners": {},
+      "rule_severities": {
+        "ComposeModifierWithoutDefault": "Error"
+      },
+      "rule_severity_evidence": [
+        "synthetic://effective-rule-inventory-and-config; format demonstration only"
+      ],
+      "rule_inventory": {
+        "schema_version": 1,
+        "mode": "all-registered",
+        "providers": {
+          "synthetic-runtime-only": "b614153cf1d236682c3377fd9dc7a3690a532ccbd3ae7947e25b8c86aa94c026"
+        },
+        "rules": {
+          "ComposeModifierWithoutDefault": "Error"
+        },
+        "discovery": {
+          "list": "c54b35bf810e75eca60a41bf7d2f53d4e023455483d4f48c414c8721d87a64dc",
+          "show": "17a187f525e2881ba2efc58f3fdd08bbb2321ad5e88e9c3f929585b52daf572d"
+        },
+        "discovery_output": {
+          "list": "\"ComposeModifierWithoutDefault\": Synthetic registry only\n",
+          "show": "ComposeModifierWithoutDefault\n-----------------------------\nSummary: Synthetic registry only\nSeverity: Error\n"
+        },
+        "rule_policy_sha256": "18bf7f986ee7f93383208309b3fa77d7d6730e913f00fd71f7463de2e6a63ead"
+      }
     },
     "detekt": {
       "base": "synthetic-base",
       "module": ":ui",
       "variant": "debug",
       "toolchain": "Synthetic schema example of pinned tools, not execution evidence",
-      "configuration_sha256": "a502dfb4d3ce1a2943a9bc7f42885a773d6e30ce5cc425cd45dbf36cfbf129de",
+      "configuration_sha256": "b943ae46d9b993f44915482d716910d2b85065d4d190fc9bdc1e778ee26cb5b3",
       "scope": "added-and-modified-lines",
-      "selected_rules": [
+      "rule_selection": "Synthetic complete enabled catalog declaration",
+      "exclusions": "No synthetic suppressions",
+      "collection_method": "Synthetic raw report format",
+      "analysis_mode": "full",
+      "source_scope": "Synthetic Tile.kt",
+      "coverage_note": "Synthetic complete v11 profile, not real execution evidence",
+      "quality_owners": {},
+      "rule_artifacts_sha256": {
+        "detekt-0.6.8.jar": "9119e4517f673bac3f511a489bbb073479dbd5bddd044b331547a9e3b07339fb",
+        "composer-quality-rules.jar": "de96eda7b6058de0ff229518341c63ec36c65e4e42257b25efcacd1b52d3c9a8",
+        "common-detekt-0.6.8.jar": "888287c94182ce4e87553b386ed2bfd785a385865f05a6fcab31e517256e92f3"
+      },
+      "required_rules": [
         "detekt.Compose.ComposableAnnotationNaming",
         "detekt.Compose.ComposableNaming",
         "detekt.Compose.ComposableParamOrder",
@@ -99,19 +133,7 @@
         "detekt.empty-blocks.EmptyCatchBlock",
         "detekt.naming.FunctionNaming",
         "detekt.style.UnusedPrivateFunction"
-      ],
-      "rule_selection": "Synthetic complete enabled catalog declaration",
-      "exclusions": "No synthetic suppressions",
-      "collection_method": "Synthetic raw report format",
-      "analysis_mode": "full",
-      "source_scope": "Synthetic Tile.kt",
-      "coverage_note": "Synthetic complete v11 profile, not real execution evidence",
-      "quality_owners": {},
-      "rule_artifacts_sha256": {
-        "detekt-0.6.8.jar": "9119e4517f673bac3f511a489bbb073479dbd5bddd044b331547a9e3b07339fb",
-        "composer-quality-rules.jar": "de96eda7b6058de0ff229518341c63ec36c65e4e42257b25efcacd1b52d3c9a8",
-        "common-detekt-0.6.8.jar": "888287c94182ce4e87553b386ed2bfd785a385865f05a6fcab31e517256e92f3"
-      }
+      ]
     }
   },
   "coverage_catalog_sha256": "5705c95be5828b1574e8e82c1f9285e2e30464117e06e658922b24d682d93f4a",
@@ -637,5 +659,6 @@
       "authority": "v11 catalog"
     }
   },
-  "acceptance_boundaries_sha256": "c5d4e60cb99421d70c358e842ad906a0559de1fd2605ba5f6bcb95a6510f2320"
+  "acceptance_boundaries_sha256": "c5d4e60cb99421d70c358e842ad906a0559de1fd2605ba5f6bcb95a6510f2320",
+  "rule_policy_sha256": "18bf7f986ee7f93383208309b3fa77d7d6730e913f00fd71f7463de2e6a63ead"
 }

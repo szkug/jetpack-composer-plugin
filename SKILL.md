@@ -2,7 +2,7 @@
 name: agent-compose-coder
 description: Design, implement, refactor, migrate or review Jetpack Compose UI using project-aware contracts, native Lint/detekt verification and in-scope correction; calculate independent static scores when requested.
 metadata:
-  version: "1.30.0"
+  version: "1.32.0"
 ---
 
 # agent-compose-coder
@@ -48,7 +48,7 @@ Repair confirmed in-scope implementation omissions and review the affected calle
 
 ## Verify, correct and verify again by default
 
-Implementation normally includes the [verification and correction loop](references/verification-loop.md). After source review, use [verify](references/verify.md) to run both native Lint and detekt on the current added/modified code with the actual compilation context. Repair confirmed in-scope findings and rerun the affected checks until final evidence covers the final source. Do not stop at compilation or a successful analyzer process exit while actionable findings remain.
+Implementation normally includes the [verification and correction loop](references/verification-loop.md). After source review, use [verify](references/verify.md) to run both native Lint and detekt on the current added/modified code with the actual compilation context. Use the same [built-in rule policy](references/verify/rule-policy.json) as scoring: projects cannot override activation or severity. Repair every confirmed in-scope warning/error and rerun affected checks until evidence covers the final source. Review suggestions against code context; decide whether to fix and explain each retained suggestion (it still deducts one point if scored). Do not stop at compilation or a successful analyzer exit while warnings/errors or execution gaps remain.
 
 This default is part of an implementation request; it does not need a second permission question. An explicit user restriction such as source-only work, read-only review or a frozen candidate takes precedence. Missing analysis inputs or unresolved applicability must be reported as incomplete, not silently skipped or replaced with guessed inputs.
 

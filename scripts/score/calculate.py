@@ -11,8 +11,8 @@ CATALOG = engine.CATALOG
 
 
 def require_current(manifest):
-    if not isinstance(manifest, dict) or manifest.get('schema_version') != 12:
-        raise ValueError('schema_version 12 required; historical scoring protocols are not supported by this CLI')
+    if not isinstance(manifest, dict) or manifest.get('schema_version') != 14:
+        raise ValueError('schema_version 14 required; historical scoring protocols are not supported by this CLI')
 
 
 def audit_manifest(manifest):
@@ -31,7 +31,7 @@ def main():
     parser.add_argument('decisions', nargs='?')
     parser.add_argument('--audit', action='store_true', help='validate the frozen manifest')
     parser.add_argument('--catalog-hash', action='store_true', help='print the current canonical catalog hash')
-    parser.add_argument('--lint-policy-hash', action='store_true', help='print the current Lint deduction policy hash')
+    parser.add_argument('--lint-policy-hash', action='store_true', help='print the current Lint weighting policy hash')
     parser.add_argument('--diagnostic', action='store_true', help='allow explicitly incomplete tool results')
     args = parser.parse_args()
     try:

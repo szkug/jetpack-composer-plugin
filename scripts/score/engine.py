@@ -6,6 +6,7 @@ from pathlib import Path
 
 from score_common import digest, number, read_json, string_list, text_field
 import diagnostics
+from rule_policy import policy_digest
 
 CATALOG = Path(__file__).resolve().parents[2] / 'references/score/catalog.json'
 VERIFICATION = Path(__file__).resolve().parents[2] / 'references/verify'
@@ -16,16 +17,16 @@ ANALYZERS = ('android-lint', 'detekt')
 
 def audit(manifest):
     catalog = read_json(CATALOG)
-    if manifest['schema_version'] != 12 or manifest['catalog_sha256'] != digest(catalog):
-        raise ValueError('v12 requires the frozen static catalog; historical visual scores cannot be imported')
+    if manifest['schema_version'] != 14 or manifest['catalog_sha256'] != digest(catalog):
+        raise ValueError('v14 requires the frozen static catalog; historical visual scores cannot be imported')
     for field in ('protocol_id', 'frozen_at', 'scope', 'overlap_review'):
         text_field(manifest, field)
     if manifest['assessment_mode'] not in ('preregistered', 'retrospective'):
         raise ValueError('declare prior exposure')
     if any(key in manifest for key in ('quality_manifest', 'criteria', 'tool_acceptance')):
-        raise ValueError('v12 does not accept manually scored quality predicates')
+        raise ValueError('v14 does not accept manually scored quality predicates')
     if any(k in manifest for k in ('dimensions', 'excluded_dimensions', 'category_scores', 'category_budgets', 'weights', 'mean', 'total', 'total_score')):
-        raise ValueError('v12 has only Lint/detekt scores; category budgets and combined totals are not supported')
+        raise ValueError('v14 has only Lint/detekt scores; category budgets and combined totals are not supported')
     profiles = manifest['analyzer_profiles']
     if set(profiles) != set(ANALYZERS):
         raise ValueError('retain both tool evidence packets; Lint remains an independent gate')
@@ -33,15 +34,18 @@ def audit(manifest):
         raise ValueError('both tools require the same comparison base')
     if manifest['lint_policy_sha256'] != digest(read_json(diagnostics.POLICY)):
         raise ValueError('detail-score policy hash mismatch')
+    if manifest.get('rule_policy_sha256') != policy_digest():
+        raise ValueError('Freeze the shared built-in verification/scoring rule policy')
     required = {rule for rule, row in catalog['rules'].items() if row['enabled']}
     for analyzer, profile in profiles.items():
         for field in (*diagnostics.PROFILE_FIELDS, 'source_scope', 'coverage_note', 'rule_selection', 'collection_method', 'exclusions'):
             text_field(profile, field)
         if profile['scope'] != 'added-and-modified-lines' or profile.get('quality_owners', {}):
-            raise ValueError('strict changed-line scope; no manual quality ownership in v12')
-        rules = string_list(profile['selected_rules'], 'selected rule IDs')
+            raise ValueError('strict changed-line scope; no manual quality ownership in v14')
+        rules = diagnostics.required_rules(analyzer, profile)
+        diagnostics.rule_weights(analyzer, profile, catalog)
         if analyzer == 'detekt' and (profile['analysis_mode'] != 'full' or set(rules) != required):
-            raise ValueError('v12 requires full analysis of the complete frozen Composer static profile')
+            raise ValueError('v14 requires full analysis of the complete frozen Composer static profile')
         if analyzer == 'detekt':
             artifacts = profile['rule_artifacts_sha256']
             if not isinstance(artifacts, dict) or not artifacts or any(
@@ -51,7 +55,7 @@ def audit(manifest):
     if manifest.get('acceptance_boundaries_sha256') != digest(read_json(BOUNDARIES)):
         raise ValueError('freeze the acceptance boundary and retirement ledger')
     audit_requirements(manifest, catalog)
-    return {'schema_version': 12, 'manifest_sha256': digest(manifest), 'catalog_sha256': digest(catalog),
+    return {'schema_version': 14, 'manifest_sha256': digest(manifest), 'catalog_sha256': digest(catalog),
             'score_outputs': list(ANALYZERS), 'detekt_rules': len(required),
             'meaning': catalog['meaning'],
             'warnings': ['No visual or business acceptance score. A clean static profile is not proof of overall UI quality.']}
@@ -137,7 +141,7 @@ def packet_with_default_reviews(packet):
                     contract = 'boolean-callable-contract:' + marker.group(1)
             if key in reviews:
                 if reviews[key]['status'] == 'covered':
-                    raise ValueError('v12 has no manual quality points to cover a tool finding')
+                    raise ValueError('v14 has no manual quality points to cover a tool finding')
                 if contract and reviews[key]['status'] == 'charge' and (
                         reviews[key].get('group') != contract or reviews[key].get('consequence_id') != contract):
                     raise ValueError('Boolean diagnostics must use the analyzer-proven callable counting unit')
@@ -151,13 +155,13 @@ def packet_with_default_reviews(packet):
                             'group': identity, 'consequence_id': identity,
                             'observation': issue['message'],
                             'evidence': [result['report_sha256'] + '/' + key],
-                            'group_reason': ('Repeated Boolean naming findings on the same resolved callable share one style charge; all call sites remain repair obligations.' if contract else 'Identical diagnostics or the same analyzer-proven discarded leaf parameter form one defect; other merges need evidence.')}
+                            'group_reason': ('Repeated Boolean naming findings on the same resolved callable share one defect group; all call sites remain repair obligations.' if contract else 'Identical diagnostics or the same analyzer-proven discarded leaf parameter form one defect; other merges need evidence.')}
     return result
 
 
 def calculate(manifest, envelope, include_mean=False):
     if include_mean:
-        raise ValueError('v12 has no mean or combined total; omit --mean and display Lint/detekt separately')
+        raise ValueError('v14 has no mean or combined total; omit --mean and display Lint/detekt separately')
     audited = audit(manifest)
     if envelope['manifest_sha256'] != audited['manifest_sha256']:
         raise ValueError('manifest hash mismatch')
@@ -181,11 +185,14 @@ def calculate(manifest, envelope, include_mean=False):
         for field in ('analysis_mode', 'source_scope', 'coverage_note'):
             if run[field] != profile[field]:
                 raise ValueError('execution scope differs from profile: ' + analyzer + '.' + field)
+        if report.get('policy', {}).get('rulePolicySha256') != policy_digest():
+            raise ValueError('Verification and scoring must use the same built-in rule policy')
         coverage = run['rule_coverage']
-        if set(coverage) != set(profile['selected_rules']):
-            raise ValueError('every selected rule requires explicit execution coverage')
+        required_rules = set(diagnostics.required_rules(analyzer, profile))
+        if set(coverage) != required_rules:
+            raise ValueError('every required rule requires explicit execution coverage')
         reported = {i['id'] for c in ('matched', 'unlocated', 'excluded') for i in report[c]}
-        if not reported <= set(profile['selected_rules']):
+        if not reported <= required_rules:
             raise ValueError('report contains undeclared rules')
         for rule, proof in coverage.items():
             string_list(proof['evidence'], 'rule coverage evidence')
@@ -205,7 +212,7 @@ def calculate(manifest, envelope, include_mean=False):
                     raise ValueError('standalone detekt receipt lacks frozen compilation-context inputs')
                 enabled = {r['id'] for r in report.get('rule_inventory', [])
                            if r.get('configuration', {}).get('enabled') is True}
-                if not set(profile['selected_rules']) <= enabled:
+                if not set(profile['required_rules']) <= enabled:
                     raise ValueError('standalone CLI did not report the complete enabled detekt rule profile')
             if (report.get('analyzer') != 'detekt' or report.get('analysis_mode') != 'full'
                     or policy.get('version') != catalog['detekt_version']
@@ -216,6 +223,11 @@ def calculate(manifest, envelope, include_mean=False):
                     or policy.get('autoCorrect') is not False
                     or (not standalone and policy.get('originalProjectEvaluated') is not True)):
                 raise ValueError('detekt receipt lacks pinned rule execution and compilation context')
+            native_severity = {'error': 'Error', 'warning': 'Warning', 'suggestion': 'Information'}
+            for bucket in ('matched', 'excluded', 'unlocated'):
+                for issue in report[bucket]:
+                    if issue['severity'] != native_severity[catalog['rules'][issue['id']]['severity']]:
+                        raise ValueError('detekt native severity differs from built-in policy: ' + issue['id'])
             names = {p['name'] for p in policy.get('pluginClasspath', []) if p.get('sha256')}
             if not {'composer-quality-rules.jar', 'detekt-' + catalog['compose_rules_version'] + '.jar'} <= names:
                 raise ValueError('missing custom/maintained rule artifact receipts')
@@ -223,51 +235,65 @@ def calculate(manifest, envelope, include_mean=False):
             if actual_artifacts != profile['rule_artifacts_sha256']:
                 raise ValueError('rule artifacts differ from the frozen profile')
             if [p['sha256'] for p in policy['configFiles']] != [catalog['default_config_sha256']]:
-                raise ValueError('v12 scoring requires the exact bundled rule configuration; custom scans need another frozen scoring profile')
+                raise ValueError('v14 scoring requires the exact bundled rule configuration; project activation/severity overrides are not accepted')
             if digest([p['sha256'] for p in policy['configFiles']]) != profile['configuration_sha256']:
                 raise ValueError('executed detekt configuration differs from the frozen ordered hashes')
         detail = diagnostics.score_packet(profile, packet, envelope['snapshot_id'])
+        if analyzer == 'android-lint':
+            inventory = profile['rule_inventory']
+            policy = report.get('policy', {})
+            if policy.get('ruleInventory') != inventory:
+                detail['missing_checks'].append('lint.complete-inventory-unverified')
+            configs = policy.get('configFiles', [])
+            if not configs or digest([p.get('sha256') for p in configs]) != profile['configuration_sha256']:
+                detail['missing_checks'].append('lint.configuration-unverified')
+            if policy.get('allRegisteredRulesExecuted') is not True:
+                detail['missing_checks'].append('lint.all-rule-execution-unverified')
+            if run.get('rule_severities') != profile['rule_severities']:
+                detail['missing_checks'].append('lint.rule-severities-unverified')
+            for bucket in ('matched', 'excluded', 'unlocated'):
+                for issue in report[bucket]:
+                    if issue['severity'] != profile['rule_severities'][issue['id']]:
+                        detail['missing_checks'].append('lint.severity-drift:' + issue['id'])
         missing.extend(analyzer + ':' + k for k in detail['missing_checks'])
         if any(k.startswith(analyzer + ':') for k in missing):
-            detail['score'] = None
-            detail['gate'] = 'failed' if report['exit_code'] == 1 else 'incomplete'
-        details[analyzer] = {**detail, 'id': analyzer, 'name': 'Lint compliance' if analyzer == 'android-lint' else 'detekt compliance'}
+            detail['missing_checks'] = sorted(set(detail['missing_checks']) | {
+                k.split(':', 1)[1] for k in missing if k.startswith(analyzer + ':')})
+            if detail['gate'] != 'failed':
+                detail['gate'] = 'incomplete'
+        detail.update(diagnostics.deduction_rule_score(
+            diagnostics.rule_weights(analyzer, profile, catalog), detail, coverage))
+        for rule, row in detail['rule_results'].items():
+            row['severity'] = (profile['rule_severities'][rule] if analyzer == 'android-lint'
+                               else catalog['rules'][rule]['severity'])
+        if detail['repair_required']:
+            detail['gate'] = 'failed'
+        details[analyzer] = {**detail, 'id': analyzer, 'name': 'Lint severity deduction score' if analyzer == 'android-lint' else 'detekt severity deduction score'}
 
     groups = {}
     rows = details['detekt']['diagnostics']
     for key, row in details['detekt']['groups'].items():
         rules = {rows[ref]['issue']['id'] for ref in row['diagnostics']}
-        # One scored owner, including cross-category overlaps: deterministic maximum points,
-        # then stable rule ID. The reviewer can establish equivalence, not invent points/owners.
-        owner = min(rules, key=lambda rule: (-catalog['rules'][rule]['deduction'], catalog['rules'][rule]['ownership_priority'], rule))
+        # A representative owner only labels the defect; every failing rule is scored above.
+        owner = min(rules, key=lambda rule: (-catalog['rules'][rule]['weight'], catalog['rules'][rule]['ownership_priority'], rule))
         policy = catalog['rules'][owner]
-        groups[key] = {**row, 'deduction': policy['deduction'], 'primary_rule': owner,
+        groups[key] = {**row, 'primary_rule': owner, 'rules': sorted(rules),
                        'category': policy['category'], 'severity': policy['severity'], 'rationale': policy['rationale'],
                        'occurrence_count': len(row['diagnostics']),
-                       'counting_unit': policy.get('counting_unit', 'distinct diagnostic or evidenced semantic owner')}
+                       'counting_unit': policy.get('defect_counting_unit', 'distinct diagnostic or evidenced semantic owner')}
     coverage = requirement_coverage(manifest, packets)
-    execution_missing = list(missing)
     labels = []
     for label in catalog['categories']:
         owned = {k: g for k, g in groups.items() if g['category'] == label['id']}
         labels.append({**label, 'finding_count': len(owned), 'group_ids': sorted(owned),
-                       'rules': [r for r in manifest['analyzer_profiles']['detekt']['selected_rules']
+                       'rules': [r for r in manifest['analyzer_profiles']['detekt']['required_rules']
                                  if catalog['rules'][r]['category'] == label['id']]})
     missing.extend('requirement:' + key for key, row in coverage.items() if row['status'] != 'covered')
-    scored_groups = list(groups.values())
-    # There is one impact policy for detekt, also in its independent tool subtotal.
-    # Do not expose an incompatible second score based on every Warning costing two points.
     detekt_detail = details['detekt']
-    raw_deduction = sum(g['deduction'] for g in groups.values())
-    detekt_detail.update(id='detekt', name='detekt static rule compliance',
-                         score=None if any(k.startswith('detekt:') for k in execution_missing) else str(max(0, 100 - raw_deduction)),
-                         raw_deductions=raw_deduction, applied_deductions=min(100, raw_deduction), groups=groups,
-                         deduction_unit_count=sum(g['deduction'] > 0 for g in groups.values()),
-                         meaning='Catalog severity-weighted independent rule subtotal; not a combined score or business acceptance.')
-    risk = {g['severity'] for g in scored_groups}
-    quality_gate = ('failed' if 'high' in risk or details['android-lint']['gate'] == 'failed' else 'changes-required' if 'major' in risk else
-                    'incomplete' if missing else 'review' if risk & {'moderate', 'minor'} else 'passed')
-    result = {'schema_version': 12, 'manifest_sha256': digest(manifest), 'decision_sha256': digest(envelope),
+    detekt_detail.update(name='detekt severity deduction score', groups=groups)
+    quality_gate = ('failed' if any(d['gate'] == 'failed' for d in details.values())
+                    else 'incomplete' if missing else 'passed')
+    result = {'schema_version': 14, 'manifest_sha256': digest(manifest), 'decision_sha256': digest(envelope),
               'snapshot_id': envelope['snapshot_id'], 'evidence_set_id': envelope['evidence_set_id'],
               'review_mode': envelope['review_mode'], 'audit': audited,
               'meaning': catalog['meaning'], 'score_scope': 'frozen-static-rule-compliance',
@@ -277,7 +303,7 @@ def calculate(manifest, envelope, include_mean=False):
               'analyzer_gates': {a: d['gate'] for a, d in details.items()},
               'publication_status': 'withheld' if missing else 'complete', 'missing_checks': sorted(set(missing)),
               'acceptance': 'Static gates only; business/build/runtime acceptance is reported separately.',
-              'score_policy': 'Two independent analyzer scores; categories have no points or budgets; no combined total.'}
+              'score_policy': 'Independent deduction scores: suggestion=1, warning=2, error=3; each failing rule is charged once; warnings/errors require repair, suggestions require a contextual decision; no combined tool score.'}
     return result
 
 
@@ -307,4 +333,4 @@ def compare(manifest, envelopes, include_mean=False, agreement=False):
                              'analyzer_differences': {analyzer: number(Fraction(r['analyzer_scores'][analyzer]['score']) - Fraction(results[0]['analyzer_scores'][analyzer]['score']))
                                  if r['analyzer_scores'][analyzer]['score'] is not None and results[0]['analyzer_scores'][analyzer]['score'] is not None else None
                                  for analyzer in ANALYZERS}} for index, r in enumerate(results[1:], 1)],
-            'interpretation': 'Static compliance protocol v12; external acceptance is unscored. Only compare the two analyzer scores separately; no average or category grades.'}
+            'interpretation': 'Static compliance protocol v14; external acceptance is unscored. Only compare the two analyzer scores separately; no average or category grades.'}

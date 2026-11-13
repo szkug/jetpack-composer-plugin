@@ -1,19 +1,20 @@
 {
-  "version": "1.0",
-  "dimension": "D14",
-  "name": "Lint compliance",
+  "version": "3.0",
+  "name": "Lint severity deduction score",
   "scope": "added-and-modified-lines",
-  "starting_score": 100,
-  "minimum_score": 0,
-  "deductions": {
-    "Fatal": 20,
-    "Error": 10,
+  "severity_weights": {
+    "Fatal": 3,
+    "Error": 3,
     "Warning": 2,
-    "Information": 0,
-    "Informational": 0,
-    "Hint": 0,
-    "Ignore": 0
+    "Information": 1,
+    "Informational": 1,
+    "Hint": 1
   },
-  "grouping": "One independent defect at one semantic owner; overlapping diagnostics use the maximum deduction once.",
-  "meaning": "Declared compliance policy, not empirically calibrated severity or a runtime-quality measure."
+  "unscored_severities": [
+    "Ignore"
+  ],
+  "formula": "max(0, 100 - sum(deduction of each distinct failing rule))",
+  "counting_unit": "distinct failing rule ID",
+  "severity_source": "Shared built-in rule policy, same registry activation/configuration for implementation, verification and scoring.",
+  "meaning": "Independent Lint and detekt scores: max(0, 100 - distinct failing rule deductions); suggestion=1, warning=2, error=3. No combined score."
 }

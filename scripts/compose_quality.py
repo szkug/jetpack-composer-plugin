@@ -18,6 +18,7 @@ ROUTES = {
     'detekt': 'scripts/verify/incremental_detekt.py',
     'score': 'scripts/score/calculate.py',
     'compare': 'scripts/score/compare.py',
+    'chart': 'scripts/score/chart.py',
 }
 
 
@@ -100,13 +101,9 @@ def main():
         return doctor(args, record)
     catalog = json.loads((ROOT / 'references/score/catalog.json').read_text())
     rules = {name: row for name, row in catalog['rules'].items() if row['enabled']}
-    from ensure_analyzers import ensure
-    for tool in ['lint', 'detekt']:
-        status = ensure(tool, check=True)
-        checks[tool + '_cli_available'] = status['status'] != 'missing-or-incompatible'
     result = {'cli': identity(record), 'lint': {'providers': ['Android/Compose official Lint', 'Slack Compose Lint'],
-        'slack_version': '1.6.1', 'scoring': 'Fatal20/Error10/Warning2/Information0'},
-        'detekt': {'rules': rules, 'scoring': 'high25/major10/moderate5/minor2/advisory0'},
+        'slack_version': '1.6.1', 'scoring': 'max(0, 100 - distinct failing rule deductions); suggestion=1, warning=2, error=3'},
+        'detekt': {'rules': rules, 'scoring': 'max(0, 100 - distinct failing rule deductions); suggestion=1, warning=2, error=3'},
         'distribution': 'Bundled configuration, custom rule source and scoring data. Upstream Android Lint and detekt CLIs are installed directly from checksum-pinned artifacts; no Gradle/AGP plugin is loaded.',
         'combined_score': 'not defined'}
     if args.json:

@@ -4,7 +4,7 @@
 
 [spec](spec.md) defines intended implementation behavior under the task and applicable project contracts. Select and maintain verification predicates from those requirements. Read the relevant spec topic first when establishing applicability; tool availability or an upstream default does not create a new source requirement.
 
-Use the verification-owned [Lint](verify/lint-rules.md), [native detekt](verify/detekt-rules.md), [maintained Compose](verify/compose-rules.md) and [custom Compose](verify/custom-compose-rules.md) maps for the requirement basis, exact recognition and limitations. A normal scan uses the selected frozen profile; it does not regenerate rules or change thresholds per candidate.
+Use the verification-owned [Lint](verify/lint-rules.md), [native detekt](verify/detekt-rules.md), [maintained Compose](verify/compose-rules.md) and [custom Compose](verify/custom-compose-rules.md) maps for the requirement basis, exact recognition and limitations. A normal scan uses the shared [built-in rule policy](verify/rule-policy.json) and exact bundled configuration for implementation and scoring; projects cannot override activation or severity. The profile it does not regenerate rules or change thresholds per candidate.
 
 If a predicate covers only part of a requirement, report that boundary. If it overreaches a valid requirement/project variation, retain the raw result and resolve applicability with evidence. Do not rewrite spec to fit a tool, treat missing coverage as success, or fill the gap with a new manual score. Changes to a profile must remain explicit and consistently applied to compared candidates.
 
@@ -26,12 +26,12 @@ Follow [analyzer evidence requirements](verify/evidence.md). Check actual execut
 
 Retain matched, excluded and unlocated diagnostics plus execution errors separately. Inspect source only as needed to interpret a reported diagnostic, scope, duplicate or exception. Use the verification maps and their linked spec basis to interpret applicability; do not replace tool results with a manually filled design checklist.
 
-Respect accepted, narrowly scoped exceptions with source evidence and project authority. Do not disable rules, generate baselines or alter source to manufacture a pass. Unknown coverage or unresolved scope remains incomplete.
+Only proven false positives or documented fixed-contract exceptions with source evidence may be adjudicated; project preference cannot opt out of a rule. Do not disable rules, generate baselines or alter source to manufacture a pass. Unknown coverage or unresolved scope remains incomplete.
 
 ## Report and hand off
 
 Report each analyzer's version/profile, source/base/module/variant, scan scope, raw exit and filtered gate, report locations, diagnostics and unresolved limitations. Supply valid evidence packets to [score](score.md) when scoring is requested; verify does not assign points.
 
-Return confirmed in-scope source defects to the [implementation workflow](../SKILL.md). Implementation requests use its default correction/reverification loop; the verification procedure itself remains read-only. Standalone verification does not authorize edits. Preserve frozen or review-only candidates. After authorized changes, rerun the affected checks against the new snapshot; old reports are not current evidence.
+Return confirmed in-scope source defects to the [implementation workflow](../SKILL.md). Implementation requests must repair all confirmed warnings/errors and review suggestions (fix or retain with a reason); retained suggestions still deduct one point in scoring. They use the default correction/reverification loop; the verification procedure itself remains read-only. Standalone verification does not authorize edits. Preserve frozen or review-only candidates. After authorized changes, rerun the affected checks against the new snapshot; old reports are not current evidence.
 
 Lint/detekt results cover their executed predicates, not arbitrary business correctness, rendered appearance, performance or the broader readability principles in spec. Report those limits without adding manual grades or treating unmeasured behavior as passed.

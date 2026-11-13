@@ -64,6 +64,8 @@ def fetch(row, destination):
     # Local caches are only an optimization. They never invoke or require Gradle/Maven.
     g, a, v = row['coordinate'].split(':')
     candidates = list((Path.home() / '.gradle/caches/modules-2/files-2.1' / g / a / v).glob('*/' + a + '-' + v + '.jar'))
+    # Reuse byte-verified artifacts when only our policy/configuration changes.
+    candidates += list((Path.home() / '.local/share/compose-quality/analyzers').glob('*/lib/' + row['file']))
     candidates.append(Path.home() / '.m2/repository' / g.replace('.', '/') / a / v / (a + '-' + v + '.jar'))
     for path in candidates:
         if path.is_file() and sha(path) == row['sha256']:

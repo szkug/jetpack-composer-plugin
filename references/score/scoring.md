@@ -1,41 +1,44 @@
 # Scoring policy and assessment procedure
 
-There are two independent scores: Lint and detekt. Category labels help locate diagnostics; they have no grades, budgets or denominator. No combined total, weighted aggregate or mean is defined. Implementation requirements come from spec; verification defines their supported static predicates.
+Protocol v14 publishes independent Lint and detekt scores out of 100. Both use the same [built-in rule policy](../verify/rule-policy.json), activation, configuration and native severity as implementation verification. Projects cannot opt out or change severities. There is no cross-tool total or mean.
 
-## Deduction policy
+## Deduction and repair policy
 
-| Score | Authoritative policy | Calculation |
-| --- | --- | --- |
-| Lint | [lint-policy.json](lint-policy.json): severity deductions and diagnostic grouping | max(0, 100 - distinct defect deductions) |
-| detekt | [catalog.json](catalog.json): each rule’s impact, deduction, ownership priority and rationale | max(0, 100 - distinct defect deductions) |
+```text
+score = max(0, 100 - sum(deduction of each distinct confirmed failing rule))
+```
 
-These JSON files are the authoritative numeric definitions. Do not maintain another handwritten rule/point table or tune weights after seeing a candidate’s result. The declared weights are policy choices, not empirical quality probabilities.
+| Classification | Native severity | Deduction | Implementation action |
+| --- | --- | --- | --- |
+| suggestion | Information / Informational / Hint | 1 | AI decides from code context; explain retained findings |
+| warning | Warning | 2 | Must repair |
+| error | Error / Fatal | 3 | Must repair |
 
-Within each tool, one proven defect is charged once at the highest applicable deduction. Analyzer-proven identical discarded leaf parameters group automatically; other equivalence, scope and false-positive decisions need source evidence. Cross-tool counterparts stay visible in both independent records and are never summed or averaged. Raw analyzer severity and gate outcomes remain visible even when detekt’s scoring impact classification differs.
+One suggestion, one warning and one error yield 94 points. One or one hundred violations of the same rule lose its points once. Two different rules on the same defect each deduct independently. Diagnostic occurrences and defect groups remain visible. Retaining a valid suggestion does not waive its deduction. Missing related syntax does not alter the score or inventory; this protocol does not claim to measure applicability or code correctness as a percentage.
 
-## Counting units
+The [Lint mapping](lint-policy.json) and [detekt catalog](catalog.json) must match the shared policy. detekt native severities must match its catalog and bundled YAML. The fixed native scan gate blocks warnings and errors; suggestions do not block. A high score cannot override the repair gate.
 
-A diagnostic occurrence and a scoring unit are separate. Preserve every source location and show both occurrence count and charged-unit count. Start at 100 and subtract the declared distinct-unit deductions; this is not `100 × correctness rate` and selected rule count is not an opportunity denominator.
+## Complete shared execution
 
-For `PositionalBooleanArguments`, the unit is one resolved source callable contract in the assessed scope. Repeated unnamed-flag calls to that same declaration cost 5 once; every affected caller still needs correction. Different declarations/overloads/receiver types cost separately. The analyzer's `composer-boolean-contract` identity is required for automatic grouping; never group by simple name, file, or rule alone. Without a proven identity, preserve per-diagnostic charges and disclose that limit. Apply changed-line filtering before grouping.
+Lint enables every registered rule, including default-disabled and non-Compose rules. Native `--list` and `--show` discovery must agree, with raw outputs, hashes and rule-provider artifacts retained in `lint-inventory.json`. The generated override enforces registry severity for implementation and scoring. Project lint.xml cannot override activation/severity; explicit `lint_config` is rejected. Supply all dependency/custom rule JARs through actual compilation context; registry discovery cannot prove completeness of an incorrectly supplied context.
 
-This style-policy grouping does not assert a common runtime cause or a single-edit fix. It does not apply to independent state, lifecycle, dropped-data or other correctness failures. Other rules retain their documented owner/defect units. No global per-rule cap is introduced. A frozen policy must say which unit it uses before comparing candidates; changing the unit requires a new assessment, preserving earlier results.
+Freeze the complete inventory in `analyzer_profiles.android-lint.rule_inventory`. `rule_severities` must exactly equal its rules map. Lint `selected_rules` is forbidden. The report's `policy.ruleInventory`, provider identities, `policy.allRegisteredRulesExecuted` and execution severity receipt must agree. detekt `required_rules` must exactly equal the complete enabled catalog; disabled built-in rules remain disabled for both verification and scoring.
 
-## Freeze scope and evidence
+Manifest `rule_policy_sha256`, inventory `rule_policy_sha256` and report `policy.rulePolicySha256` bind execution and scoring to the same policy. Configuration, rule-provider or severity drift prevents publication. Scoring consumes verification evidence rather than enabling additional scoring-only rules.
 
-Before a prospective comparison, freeze source/base, module/variant, actual compilation context, rule/configuration/artifact hashes, selected execution coverage and evidence policy. Declare retrospective exposure otherwise. Reuse verified unchanged evidence when appropriate, explicitly labeling reuse; do not describe reused reports as new scans or repair frozen candidates.
+## Evidence and publication
 
-Verification owns the [coverage catalog](../verify/coverage.json), [acceptance boundaries](../verify/acceptance-boundaries.json), [diagnostic evidence](../verify/evidence.md) and [compilation receipts](../verify/cli.md). Consume their frozen data and actual execution records. Score does not redefine checks, add manual requirements or turn unknown coverage into a passed check.
+Freeze source/base, module/variant, actual compilation context, policy/configuration/artifact hashes and required execution coverage. Compared candidates share the same configuration and policy. Preserve frozen candidate source. Declare retrospective exposure; reuse valid unchanged evidence explicitly rather than claiming a fresh scan.
 
-Missing, suppressed or unverified selected checks, source drift, analysis failures and unresolved diagnostics withhold the affected tool score. An available other-tool result can remain visible as an explicitly incomplete assessment. Preserve original findings, receipts, exception evidence and duplicate identities.
+Apply changed-line filtering before counting. Retain matched, excluded and unlocated diagnostics, adjudications, occurrence counts and evidence-backed defect groups. Only proven false positives or documented fixed-contract exceptions may remove a charge; project preference and optional suggestion repair are not exemptions. An additional confirmed violation of an excepted rule still deducts.
 
-## Gates and publication
+Publish `score`, `starting_score`, `raw_deductions`, `applied_deductions`, `severity_counts`, `deductions_by_severity`, `failed_rule_count`, `total_rule_count`, `finding_count`, `defect_count` and repair gate. Each `rule_results` entry records classification, deduction, must-fix, execution status and diagnostics. Raw deductions may exceed 100; applied deductions are capped at 100 and score floors at zero.
 
-Gate status and evidence completeness are separate from the numeric scores. The current gate policy treats Lint errors or high-impact detekt findings as failed, major findings as changes required, and moderate/minor findings as requiring review. A complete numeric report is not a passed delivery.
+Missing/unavailable/suppressed/unverified checks, unresolved diagnostics, analysis failures or source drift withhold the affected score. Observed deductions are lower bounds, not final grades. Preserve the full required inventory; incomplete checks are not passes. An available other-tool score remains visible with overall publication withheld. Runtime/build/business/visual acceptance remains separate. Report actual KMP source sets and type resolution; Android-only results do not establish commonMain coverage.
 
-Business/runtime acceptance is separately scoped and unscored. Do not infer it from a clean static report or add a numeric visual score. Preview declarations do not authorize rendering/device work. Mark unperformed external checks as not assessed and retain known limits alongside both tool results.
+## Versions and commands
 
-## Commands and current examples
+v14 replaces v13 weighted rule pass rates with deductions and a shared warning/error repair gate. Preserve historical manifests and results; old schemas are rejected rather than reinterpreted. A new assessment needs a separately identified v14 manifest and policy-bound execution evidence. Never relabel legacy receipts or silently change historical candidate scores.
 
 ```sh
 compose-quality score manifest.json evidence.json
@@ -43,6 +46,4 @@ compose-quality compare manifest.json A.json B.json C.json
 compose-quality compare manifest.json reviewer-a.json reviewer-b.json --agreement
 ```
 
-`--diagnostic` permits explicitly incomplete results; it does not make them publishable final scores. `--agreement` requires identical frozen source and raw evidence. Repeat calculation demonstrates determinism, not an independent review; use the [independent review procedure](independent-review.md) only when authorized. No `--mean`, manually supplied grades or category budgets are accepted.
-
-The [manifest](example-manifest.json) and [evidence](example-decisions.json) examples are synthetic format/calibration inputs, not project acceptance results. File names identify roles; schema/policy versions and hashes inside the data identify the frozen protocol. The distributed calculator accepts only its current schema. Historical reproduction uses an external frozen archive.
+`--diagnostic` permits incomplete output, not publication. `--agreement` needs identical source and raw evidence. Recalculation proves determinism, not independent review. No manual grades, category budgets, `--mean` or cross-tool totals. The [manifest](example-manifest.json) and [evidence](example-decisions.json) examples are synthetic format inputs.

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "composer-static-v7",
+  "applies_to": [
+    "implementation-verification",
+    "standalone-verification",
+    "scoring"
+  ],
+  "lint": {
+    "activation": "all-registered",
+    "include_default_disabled": true,
+    "severity_source": "native registry defaults enforced by generated override",
+    "allow_project_overrides": false
+  },
+  "detekt": {
+    "activation": "exact bundled YAML",
+    "configuration": "scripts/verify/rules/detekt.yml",
+    "catalog": "references/score/catalog.json",
+    "allow_project_overrides": false
+  },
+  "classes": {
+    "suggestion": {
+      "deduction": 1,
+      "must_fix": false
+    },
+    "warning": {
+      "deduction": 2,
+      "must_fix": true
+    },
+    "error": {
+      "deduction": 3,
+      "must_fix": true
+    }
+  },
+  "native_severity_classes": {
+    "Fatal": "error",
+    "Error": "error",
+    "Warning": "warning",
+    "Information": "suggestion",
+    "Informational": "suggestion",
+    "Hint": "suggestion"
+  },
+  "score": {
+    "initial": 100,
+    "floor": 0,
+    "counting_unit": "distinct failing rule ID",
+    "formula": "max(0, 100 - sum(deduction of each distinct failing rule))"
+  },
+  "gate": "warning-and-error",
+  "suggestion_handling": "AI decides from code context whether to repair; document retained suggestions and reasons; retained valid suggestions still deduct one point"
+}

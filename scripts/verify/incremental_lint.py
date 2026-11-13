@@ -107,6 +107,10 @@ def check(out, cli_exit):
     threshold = 1 if manifest['fail_level'] == 'warning' else 2
     blocked = [item for item in matched if levels.get(item['severity'].lower(), 2) >= threshold]
     status = 2 if errors else (1 if blocked else 0)
+    inventory = receipt.get('ruleInventory')
+    if inventory:
+        # Prepared command, provider hashes and override policy are validated above.
+        receipt['allRegisteredRulesExecuted'] = not errors
     result = {'exit_code': status, 'base': manifest['base'], 'scope': 'added-and-modified-lines',
               'errors': errors, 'matched': matched, 'excluded': excluded, 'unlocated': unlocated,
               'policy': receipt, 'blocking_count': len(blocked)}

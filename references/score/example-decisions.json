@@ -28,18 +28,44 @@
         "excluded": [],
         "unlocated": [],
         "policy": {
-          "synthetic": true
+          "ruleInventory": {
+            "schema_version": 1,
+            "mode": "all-registered",
+            "providers": {
+              "synthetic-runtime-only": "b614153cf1d236682c3377fd9dc7a3690a532ccbd3ae7947e25b8c86aa94c026"
+            },
+            "rules": {
+              "ComposeModifierWithoutDefault": "Error"
+            },
+            "discovery": {
+              "list": "c54b35bf810e75eca60a41bf7d2f53d4e023455483d4f48c414c8721d87a64dc",
+              "show": "17a187f525e2881ba2efc58f3fdd08bbb2321ad5e88e9c3f929585b52daf572d"
+            },
+            "discovery_output": {
+              "list": "\"ComposeModifierWithoutDefault\": Synthetic registry only\n",
+              "show": "ComposeModifierWithoutDefault\n-----------------------------\nSummary: Synthetic registry only\nSeverity: Error\n"
+            },
+            "rule_policy_sha256": "18bf7f986ee7f93383208309b3fa77d7d6730e913f00fd71f7463de2e6a63ead"
+          },
+          "allRegisteredRulesExecuted": true,
+          "configFiles": [
+            {
+              "name": "all-rules-lint.xml",
+              "sha256": "1dea1272d2e2287751c35d1c0c2c5751133d0317124087f28bab90e5b628d14f"
+            }
+          ],
+          "rulePolicySha256": "18bf7f986ee7f93383208309b3fa77d7d6730e913f00fd71f7463de2e6a63ead"
         },
         "analyzer": "android-lint",
         "analysis_mode": "android-lint"
       },
-      "report_sha256": "6d0011f8226a4856cc75004455f20e2300910f50d2831b248264c4688dc66c54",
+      "report_sha256": "f9e4ace6aa72104bb7d100e0757022742daf118372c658a9b4e73612004e4efb",
       "run": {
         "base": "synthetic-base",
         "module": ":ui",
         "variant": "debug",
         "toolchain": "Synthetic schema example of pinned tools, not execution evidence",
-        "configuration_sha256": "a9d3e3dbb5e9ba3deaa98dfe105b3930b947e7ba3d2695b0f7492750af2b591d",
+        "configuration_sha256": "eb115285c57cef7cf34454f865e797009329e58d7f5514a9cf621fc1bdcd04ac",
         "analysis_mode": "android-lint",
         "source_scope": "Synthetic Tile.kt",
         "coverage_note": "Synthetic field demonstration; no actual tool execution",
@@ -57,6 +83,9 @@
               "synthetic://format-only"
             ]
           }
+        },
+        "rule_severities": {
+          "ComposeModifierWithoutDefault": "Error"
         }
       }
     },
@@ -108,7 +137,7 @@
           "configFiles": [
             {
               "path": "synthetic/config-0.yml",
-              "sha256": "44c5768d3660c22a9420ada16f20cebf20646badeff969b7d8581314818a73a7"
+              "sha256": "5d945350a826f4d14458c930dc77580d0ed41191f30056d3cc295541c349d143"
             }
           ],
           "pluginClasspath": [
@@ -130,18 +159,19 @@
           ],
           "module": ":ui",
           "variant": "debug",
-          "mode": "full"
+          "mode": "full",
+          "rulePolicySha256": "18bf7f986ee7f93383208309b3fa77d7d6730e913f00fd71f7463de2e6a63ead"
         },
         "analyzer": "detekt",
         "analysis_mode": "full"
       },
-      "report_sha256": "62ae2483b7c457d72428fb6916144bc94d3b1c83bf679e6d83e66e3927d27141",
+      "report_sha256": "9f3879a7b80d359621ddc184a4e1bf5200e692252e5e764be337929a16bf7857",
       "run": {
         "base": "synthetic-base",
         "module": ":ui",
         "variant": "debug",
         "toolchain": "Synthetic schema example of pinned tools, not execution evidence",
-        "configuration_sha256": "a502dfb4d3ce1a2943a9bc7f42885a773d6e30ce5cc425cd45dbf36cfbf129de",
+        "configuration_sha256": "b943ae46d9b993f44915482d716910d2b85065d4d190fc9bdc1e778ee26cb5b3",
         "analysis_mode": "full",
         "source_scope": "Synthetic Tile.kt",
         "coverage_note": "Synthetic complete v11 profile, not real execution evidence",
@@ -547,5 +577,5 @@
       }
     }
   },
-  "manifest_sha256": "5344a28240beec6e7b0ed09cfb467fd38283dc1457c349b74d21aac420f2ec96"
+  "manifest_sha256": "58dfe4d7d8a63f4201dd35e0b541d536415a1fcca27c08c43bc7a59b09f187c2"
 }

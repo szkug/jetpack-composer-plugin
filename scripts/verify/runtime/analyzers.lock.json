@@ -716,5 +716,5 @@
     "scripts/verify/rules/custom-compose-rule/src/ComposerRules.kt": "6c3ee49e99444e678c67936cb474a80f510e141a081a70cf9604712738321651",
     "scripts/verify/rules/custom-compose-rule/src/META-INF/services/dev.detekt.api.RuleSetProvider": "fe48261d8be51e19193e315b40498061f0e858d856a5115f3cc335afa25509d5"
   },
-  "config_sha256": "44c5768d3660c22a9420ada16f20cebf20646badeff969b7d8581314818a73a7"
+  "config_sha256": "5d945350a826f4d14458c930dc77580d0ed41191f30056d3cc295541c349d143"
 }
